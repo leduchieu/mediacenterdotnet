@@ -1,0 +1,231 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="ProjectDOTNET.WindowRSS"
+	x:Name="Window"
+	Title="WindowRSS"
+	Width="1474" Height="1173" WindowStyle="None" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+	<Window.Resources>
+		<Storyboard x:Key="windowLoad">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="{x:Null}">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<XmlDataProvider x:Key="RSSAZ" x:Name="RSSFeed" d:IsDataSource="True" Source="http://www.arenazero.net/feed/noticias.rss"/>
+		<DataTemplate x:Key="itemTemplate">
+			<Border Margin="10" Padding="8">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Título:"/>
+				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=title}"/>
+				<TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" Text="Descripción:"/>
+				<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=description}"/>
+				<TextBlock Grid.Row="2" Grid.Column="0" FontWeight="Bold" Text="Fecha publicación:  "/>
+				<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=pubDate}"/>
+				<TextBlock Grid.Row="3" Grid.Column="0" FontWeight="Bold" Text="Link:  "/>
+				<TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=link}"/>
+			</Grid>
+			</Border>
+		</DataTemplate>
+		<Storyboard x:Key="mvEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(FrameworkElement.Width)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="120"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="120"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="AZImg" Storyboard.TargetProperty="(FrameworkElement.Width)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="AZImg" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.945"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="mvLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.695"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="azEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="100"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="100"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.945"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="90"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="90"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="azLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AZImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.695"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="meneaEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="meneameImg" Storyboard.TargetProperty="(FrameworkElement.Width)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="95"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="meneameImg" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="95"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(FrameworkElement.Width)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="mvImg" Storyboard.TargetProperty="(FrameworkElement.Height)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="80"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="meneameImg" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.945"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="meneaLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="mvImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="70"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="meneameImg">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0.695"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="Background" Value="#00FFFFFF"/>
+			<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="2,0,0,0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+							<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+								<Setter Property="Background" TargetName="Bd">
+									<Setter.Value>
+										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+											<GradientStop Color="#7F2D951F" Offset="0"/>
+											<GradientStop Color="#7F2D951F" Offset="0.996"/>
+											<GradientStop Color="#7F9CF4AE" Offset="0.527"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="Opacity" TargetName="Bd" Value="1"/>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="True"/>
+									<Condition Property="Selector.IsSelectionActive" Value="False"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="mvImg">
+			<BeginStoryboard Storyboard="{StaticResource mvEnter}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="mvImg">
+			<BeginStoryboard Storyboard="{StaticResource mvLeave}" x:Name="mvLeave_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="AZImg">
+			<BeginStoryboard Storyboard="{StaticResource azEnter}" x:Name="azEnter_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="AZImg">
+			<BeginStoryboard Storyboard="{StaticResource azLeave}" x:Name="azLeave_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource windowLoad}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="meneameImg">
+			<BeginStoryboard Storyboard="{StaticResource meneaEnter}" x:Name="meneaEnter_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="meneameImg">
+			<BeginStoryboard Storyboard="{StaticResource meneaLeave}" x:Name="meneaLeave_BeginStoryboard"/>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<Image Margin="0,0,0,0" Source="Utils\Wallpaper.jpg" Stretch="Fill"/>
+		<ListBox ItemTemplate="{DynamicResource itemTemplate}" ItemsSource="{Binding Mode=OneWay, Source={StaticResource RSSAZ}, XPath=/rss/channel/item}" HorizontalAlignment="Stretch" Margin="20,20,20,240" Width="Auto" Background="#A5FFFFFF" Foreground="#FF000000" SelectedIndex="-1" FontSize="16" Panel.ZIndex="0" IsHitTestVisible="True" IsTabStop="False" ScrollViewer.IsDeferredScrollingEnabled="False" x:Name="listBox" ItemContainerStyle="{DynamicResource ListBoxItemStyle}" MouseDoubleClick="listBox_MouseDoubleClick"/>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Margin="0,0,0,80" Orientation="Horizontal">
+			<Image Opacity="0.695" x:Name="AZImg" Width="70" Height="70" Source="Utils\Az.png" Stretch="Fill" MouseLeftButtonUp="AZImg_MouseLeftButtonUp"/>
+			<Image Opacity="0.695" x:Name="mvImg" Width="80" Height="80" Source="Utils\MV.png" Stretch="Fill" MouseLeftButtonUp="mvImg_MouseLeftButtonUp"/>
+			<Image Width="70" Height="70" Source="Utils\meneame.png" Stretch="Fill" Opacity="0.695" x:Name="meneameImg" MouseUp="meneameImg_MouseUp"/>
+			<Image Opacity="0.695" Margin="70,0,0,0" x:Name="CloseImg" Width="60" Height="60" Source="Utils\cancel.png" Stretch="Fill" MouseEnter="CloseImg_MouseEnter" MouseLeave="CloseImg_MouseLeave" MouseLeftButtonUp="CloseImg_MouseLeftButtonUp"/>
+		</StackPanel>
+	</Grid>
+</Window>

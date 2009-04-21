@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProjectDOTNET</name>
+    </assembly>
+    <members>
+        <member name="T:ProjectDOTNET.WindowImages">
+            <summary>
+            WindowImages
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.ImageFile">
+            <summary>Esta clase guarda el path, el path convertido a Uri y un imagen
+            <param name="path">Sirve para indicar el path a la imagen</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.MusicFile">
+            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de música
+            <param name="path">Sirve para indicar el path a la cancion</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.VideoFile">
+            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de video
+            <param name="path">Sirve para indicar el path al video</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.PhotoList">
+            <summary>Esta clase es una coleccion de archivos ImageFile
+            <param name="path">Sirve para indicar el path al directorio de fotos</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.MusicList">
+            <summary>Esta clase es una coleccion de archivos MusicFile
+            <param name="path">Sirve para indicar el path al directorio de canciones</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.VideoList">
+            <summary>Esta clase es una coleccion de archivos de Video
+            <param name="path">Sirve para indicar el path al directorio de videos</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.ObservableTelefono">
+            <summary>Esta clase es una coleccion de objetos Telefono (base de datos)
+            <param name="dataDc">Sirve para indicar el DataContext</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowBrowser">
+            <summary>
+            WindowBrowser
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowBrowser.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowPhone">
+            <summary>
+            WindowPhone
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowPhone.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.App">
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowRSS">
+            <summary>
+            WindowRSS
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowRSS.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowCredits">
+            <summary>
+            WindowCredits
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowCredits.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowGames">
+            <summary>
+            WindowGames
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowGames.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowVideo">
+            <summary>
+            WindowVideo
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowVideo.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowMusic">
+            <summary>
+            WindowMusic
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowMusic.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.Window1">
+            <summary>
+            Window1
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.Window1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

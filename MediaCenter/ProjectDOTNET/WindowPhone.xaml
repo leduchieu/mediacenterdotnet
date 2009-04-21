@@ -1,0 +1,1269 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="ProjectDOTNET.WindowPhone"
+	x:Name="Window"
+	Title="WindowPhone"
+	Width="1024" Height="768" HorizontalAlignment="Center" VerticalAlignment="Center" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" WindowStyle="None">
+	<Window.Resources>
+        <DataTemplate x:Key="DetailTemplate">
+            <Border Width="300" Height="100" Margin="20"
+              BorderBrush="Aqua" BorderThickness="1" Padding="8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Nombre:"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Nombre}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Apellidos:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Apellidos}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Handle:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Handle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefono:"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=Telefono1}"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <Style x:Key="ButtonStyle1" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="1" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonCallStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="ButtonCallStory1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.504"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.509"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0BF905"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF04A100"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="ButtonCallStory2">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.5"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.509"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.504"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF04A100"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF0BF905"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Opacity="0.5" Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF0BF905" Offset="0"/>
+										<GradientStop Color="#FF0BF905" Offset="1"/>
+										<GradientStop Color="#FF0BF905" Offset="0.504"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Opacity="0.595" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" Foreground="#FFFFFFFF" Text="Llamar" TextWrapping="Wrap"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource ButtonCallStory2}" x:Name="ButtonCallStory2_BeginStoryboard"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource ButtonCallStory1}"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="buttonPhoneEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="buttonPhoneExit">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="ButtonStyle2" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="2" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle3" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="3" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle4" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="4" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle5" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="5" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle6" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="6" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle7" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="7" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle8" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="8" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle9" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="9" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle0" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="0" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyleAst" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="*" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyleAlm" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="#" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="StoryNumber">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="boxNumero" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.695"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="StoryNumber2">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="boxNumero">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.695"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="ButtonStyleC" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="buttonPhoneEnter">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.895"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD3CACA"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7E7979"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF6B6868"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="buttonPhoneExit">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD3CACA"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF6B6868"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF7E7979"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" Opacity="0.8" Cursor="Hand" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF7E7979" Offset="0"/>
+										<GradientStop Color="#FF7E7979" Offset="1"/>
+										<GradientStop Color="#FF7E7979" Offset="0.509"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="C" FontSize="28" FontWeight="Bold" Foreground="#FFF9F9F9" Opacity="0.695"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneEnter}"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource buttonPhoneExit}" x:Name="buttonPhoneExit_BeginStoryboard"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="ButtonCallStory2">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.509"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.504"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF04A100"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF0BF905"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="ButtonCallStory1">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.504"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.509"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0BF905"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF04A100"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="ButtonHangStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="ButtonCallStory1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.795"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.504"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.509"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFF90F05"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF990C06"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="ButtonCallStory2">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.795"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.5"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="rectangle">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.509"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.504"/>
+								</DoubleAnimationUsingKeyFrames>
+								<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+									<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF990C06"/>
+									<SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFF90F05"/>
+								</ColorAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Opacity="0.5" Stroke="#FF000000" RadiusX="8.5" RadiusY="8.5" x:Name="rectangle">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FFF90F05" Offset="0"/>
+										<GradientStop Color="#FFF90F05" Offset="1"/>
+										<GradientStop Color="#FFF90F05" Offset="0.504"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Opacity="0.595" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" Foreground="#FFFFFFFF" Text="Colgar" TextWrapping="Wrap"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<EventTrigger RoutedEvent="Mouse.MouseLeave">
+								<BeginStoryboard Storyboard="{StaticResource ButtonCallStory2}" x:Name="ButtonCallStory2_BeginStoryboard"/>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="Mouse.MouseEnter">
+								<BeginStoryboard Storyboard="{StaticResource ButtonCallStory1}"/>
+							</EventTrigger>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ListBoxItemSelectedStyle" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="2,0,0,0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+							<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+								<Setter Property="Background" TargetName="Bd">
+									<Setter.Value>
+										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+											<GradientStop Color="#A529FF00" Offset="0"/>
+											<GradientStop Color="#A529FF00" Offset="1"/>
+											<GradientStop Color="#A5C9F7C0" Offset="0.5"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="True"/>
+									<Condition Property="Selector.IsSelectionActive" Value="False"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Opacity" Value="0.85"/>
+			<Setter Property="Background" Value="#00FFFFFF"/>
+			<Setter Property="Foreground" Value="#FFFFFFFF"/>
+		</Style>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="boxNumero">
+			<BeginStoryboard Storyboard="{StaticResource StoryNumber}" x:Name="StoryNumber_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="boxNumero">
+			<BeginStoryboard Storyboard="{StaticResource StoryNumber2}" x:Name="StoryNumber2_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource StoryNumber}" x:Name="StoryNumber_BeginStoryboard1"/>
+			<BeginStoryboard Storyboard="{StaticResource StoryNumber2}" x:Name="StoryNumber2_BeginStoryboard1"/>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Image Margin="0,0,0,0" Source="Utils\Nature_big.jpg" Stretch="Fill"/>
+		<Image Opacity="0.695" x:Name="closeImg" Width="48" Height="48" Source="Utils\cancel.png" Stretch="Fill" MouseEnter="Image_MouseEnter" MouseLeave="closeImg_MouseLeave" MouseLeftButtonUp="closeImg_MouseLeftButtonUp" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0"/>
+		<StackPanel HorizontalAlignment="Center" Margin="30,10,30,10" VerticalAlignment="Center" Orientation="Horizontal">
+			<StackPanel Width="Auto">
+				<TextBox Height="Auto" Text="Introduzca número" TextWrapping="Wrap" Opacity="0.5" MaxLines="1" FontSize="24" FontWeight="Bold" Foreground="#FFFBFBFB" Background="#FF2D8900" TextAlignment="Right" IsReadOnly="True" Cursor="Pen" ClipToBounds="False" BorderBrush="{x:Null}" x:Name="boxNumero" IsEnabled="True" Width="271">
+					<TextBox.BitmapEffect>
+						<OuterGlowBitmapEffect GlowColor="#FF10FF00"/>
+					</TextBox.BitmapEffect>
+				</TextBox>
+				<Button Style="{DynamicResource ButtonStyleC}" Width="45" Height="35" Content="Button" Opacity="1" x:Name="ButtonC" Click="ButtonC_Click" Margin="0,0,5,0" HorizontalAlignment="Right">
+					<Button.Background>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FF7E7979" Offset="0"/>
+							<GradientStop Color="#FFFFFFFF" Offset="1"/>
+						</LinearGradientBrush>
+					</Button.Background>
+				</Button>
+				<StackPanel Orientation="Horizontal" d:LayoutOverrides="Width, Height">
+					<StackPanel Width="90" Height="291.932">
+						<Button Style="{DynamicResource ButtonStyle1}" Width="90" Height="70" Content="Button" Opacity="1" x:Name="Button1" Click="Button1_Click">
+							<Button.Background>
+								<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+									<GradientStop Color="#FF7E7979" Offset="0"/>
+									<GradientStop Color="#FFFFFFFF" Offset="1"/>
+								</LinearGradientBrush>
+							</Button.Background>
+						</Button>
+						<Button Width="90" Height="70" Content="Button" Style="{DynamicResource ButtonStyle4}" x:Name="Button4" Click="Button4_Click"/>
+						<Button Style="{DynamicResource ButtonStyle7}" Width="90" Content="Button" x:Name="Button7" Height="69.932" Click="Button7_Click"/>
+						<Button Style="{DynamicResource ButtonStyleAst}" Width="90" Content="Button" x:Name="ButtonAst" Height="70" Click="ButtonAst_Click"/>
+					</StackPanel>
+					<StackPanel Width="90" Height="291.932">
+						<Button Height="70" Content="Button" Style="{DynamicResource ButtonStyle2}" x:Name="Button2" Width="90" Click="Button2_Click"/>
+						<Button Style="{DynamicResource ButtonStyle5}" Height="70" Content="Button" x:Name="Button5" Width="90" Click="Button5_Click"/>
+						<Button Style="{DynamicResource ButtonStyle8}" Content="Button" x:Name="Button8" Width="90" Height="69.932" Click="Button8_Click"/>
+						<Button Style="{DynamicResource ButtonStyle0}" Content="Button" x:Name="Button0" Width="90" Height="70" Click="Button0_Click"/>
+					</StackPanel>
+					<StackPanel Width="90" Height="291.932">
+						<Button Height="70" Content="Button" Style="{DynamicResource ButtonStyle3}" x:Name="Button3" Width="90" Click="Button3_Click"/>
+						<Button Style="{DynamicResource ButtonStyle6}" Height="70" Content="Button" Width="90" x:Name="Button6" Click="Button6_Click"/>
+						<Button Style="{DynamicResource ButtonStyle9}" Content="Button" Width="90" x:Name="Button9" Height="69.932" Click="Button9_Click"/>
+						<Button Style="{DynamicResource ButtonStyleAlm}" Content="Button" Width="90" x:Name="ButtonAlm" Height="70" Click="ButtonAlm_Click"/>
+					</StackPanel>
+				</StackPanel>
+				<Button x:Name="ButtonCall" Style="{DynamicResource ButtonCallStyle}" Height="62" Content="Button" Cursor="Hand" Click="ButtonCall_Click" Width="267" Margin="0,0,0,10"/>
+				<Button x:Name="ButtonHang" Style="{DynamicResource ButtonHangStyle}" Height="62" Content="Button" Cursor="Hand" Click="ButtonHang_Click" Width="267"/>
+			</StackPanel>
+			<ListBox IsSynchronizedWithCurrentItem="True" Width="Auto" Height="Auto" x:Name="listaTelefonos" SelectionChanged="listaTelefonos_SelectionChanged" ItemTemplate="{StaticResource DetailTemplate}" ItemContainerStyle="{DynamicResource ListBoxItemSelectedStyle}" Opacity="1" Background="#722D8900" Foreground="#E5FFFFFF" Margin="15,0,0,0"/>
+		</StackPanel>
+	</Grid>
+</Window>
