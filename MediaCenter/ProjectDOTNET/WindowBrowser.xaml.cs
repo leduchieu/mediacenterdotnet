@@ -13,7 +13,10 @@ namespace ProjectDOTNET
 	public partial class WindowBrowser
 	{
         private String aim;
-        
+
+        /// <summary>Constructor sin argumentos
+        /// <para>La pagina por defecto es arenazero, aunque nunca se llamara a este constructor</para>
+        /// </summary>
         public WindowBrowser()
         {
             this.InitializeComponent();
@@ -22,6 +25,9 @@ namespace ProjectDOTNET
             browser.Source = new Uri("http://www.arenazero.net");
         }
 
+        /// <summary>Constructor con argumentos
+        /// <param name="link">Sirve para indicar la direccion de la web a cargar</param>
+        /// </summary>
         public WindowBrowser(String link)
         {
             this.InitializeComponent();
@@ -31,6 +37,10 @@ namespace ProjectDOTNET
             aim = "";
         }
 
+        /// <summary>Constructor con argumentos
+        /// <param name="link">Sirve para indicar la direccion de la web a cargar</param>
+        /// <param name="aim">Sirve para indicar quien llamo al navegador (RSS o JUEGOS)</param>
+        /// </summary>
         public WindowBrowser(String link, String aim)
         {
             this.InitializeComponent();
