@@ -12,6 +12,8 @@ namespace ProjectDOTNET
 {
 	public partial class Window1
 	{
+        /// <summary>Variable para el reloj
+        /// </summary>
         public System.Windows.Threading.DispatcherTimer myDispatcherTimer;
 
 		public Window1()
@@ -21,6 +23,9 @@ namespace ProjectDOTNET
 			// Insert code required on object creation below this point.
 		}
 
+        /// <summary>Metodo al iniciar la ventana principal
+        /// <para>Obtiene la fecha y la muestra en el reloj <see cref="System.DateTime"/> para mas informacion sobre la hora.</para>
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DateTime dt = DateTime.Now;
@@ -39,6 +44,9 @@ namespace ProjectDOTNET
             this.textTime.Text = hours + ":" + minutes + ":" + seconds;
         }
 
+        /// <summary>Metodo para iniciar el dispatcher
+        /// <para>Cada segundo llama a la funcion changeTime <see cref="System.Windows.Threading.DispatcherTimer"/> para mas informacion sobre dispatchers.</para>
+        /// </summary>
         private void StartTimer(object o, RoutedEventArgs sender)
         {
             myDispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -47,6 +55,8 @@ namespace ProjectDOTNET
             myDispatcherTimer.Start();
         }
 
+        /// <summary>Metodo para cambiar la hora mostrada
+        /// </summary>
         private void changeTime(object o, EventArgs sender)
         {
             DateTime dt = DateTime.Now;
