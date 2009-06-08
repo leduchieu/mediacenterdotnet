@@ -39,6 +39,10 @@
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Reference Include="System.Data.SQLite.DLL">
+      <HintPath>..\..\..\ProjectDOTNET\ProjectDOTNET\bin\Debug\System.Data.SQLite.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="3DTools.dll">
       <HintPath>bin\Debug\3DTools-1.01-bin\3DTools.dll</HintPath>
       <Private>True</Private>
@@ -64,10 +68,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\sqlite\bin\System.Data.SQLite.DLL</HintPath>
     </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=2.0.38.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\sqlite\bin\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <ApplicationDefinition Include="App.xaml">
@@ -78,6 +78,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Telephones.cs" />
     <Compile Include="DBFactory.cs" />
     <Compile Include="EnrollFail.cs" />
@@ -128,6 +131,10 @@
     <Compile Include="WindowPhone.xaml.cs">
       <DependentUpon>WindowPhone.xaml</DependentUpon>
     </Compile>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Window2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,6 +190,7 @@
     <Resource Include="Utils\Exit.png" />
     <Resource Include="Utils\GamesWall.jpg" />
     <Resource Include="Utils\Images.png" />
+    <Resource Include="Utils\login.jpg" />
     <Resource Include="Utils\meneame.png" />
     <Resource Include="Utils\Music.png" />
     <Resource Include="Utils\MV.png" />

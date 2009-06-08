@@ -31,11 +31,11 @@
     <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
   </PropertyGroup>
   <PropertyGroup>
-    <SolutionDir>C:\Programacion\Seminario .NET\ProjectDOTNET\</SolutionDir>
+    <SolutionDir>C:\Programacion\Seminario .NET\svn\MediaCenter\</SolutionDir>
     <SolutionExt>.sln</SolutionExt>
     <SolutionFileName>ProjectDOTNET.sln</SolutionFileName>
     <SolutionName>ProjectDOTNET</SolutionName>
-    <SolutionPath>C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET.sln</SolutionPath>
+    <SolutionPath>C:\Programacion\Seminario .NET\svn\MediaCenter\ProjectDOTNET.sln</SolutionPath>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>

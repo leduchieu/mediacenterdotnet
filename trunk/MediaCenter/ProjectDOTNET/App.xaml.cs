@@ -21,8 +21,8 @@ namespace ProjectDOTNET
         /// </summary>
         void MediaCenter_Startup(object sender, StartupEventArgs e)
         {
-            Window1 window = new Window1();
-            //Window2 window = new Window2();
+            //Window1 window = new Window1();
+            Window2 window = new Window2();
             window.WindowState = WindowState.Maximized;
             window.Show();
         }
