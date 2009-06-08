@@ -68,6 +68,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="WindowScreenSaver.xaml.cs">
+      <DependentUpon>WindowScreenSaver.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
     <Compile Include="WindowPhone.xaml.cs">
       <DependentUpon>WindowPhone.xaml</DependentUpon>
     </Compile>
+    <Page Include="WindowScreenSaver.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
