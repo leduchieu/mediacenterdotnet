@@ -27,7 +27,7 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Handle:"/>
                     <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Handle}"/>
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Telefono:"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=Telefono1}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=Telefono}"/>
                 </Grid>
             </Border>
         </DataTemplate>

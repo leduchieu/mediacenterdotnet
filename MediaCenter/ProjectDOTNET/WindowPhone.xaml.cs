@@ -17,7 +17,7 @@ namespace ProjectDOTNET
         // Atributos declarados por mi
         private SKYPE4COMLib.Skype skype;
         private SKYPE4COMLib.Call llamada;
-        private static TelefonosDataContext dataDC = new TelefonosDataContext();
+       // private static TelefonosDataContext dataDC = new TelefonosDataContext();
         private ObservableTelefono listaTels;
 
         public SKYPE4COMLib.Skype Skype
@@ -40,8 +40,10 @@ namespace ProjectDOTNET
             skype.SilentMode = true;
             llamada = null;
             // Base de datos
-            listaTels = new ObservableTelefono(dataDC);
-            foreach (Telefono t in listaTels)
+            TelephoneDB aux = new TelephoneDB();
+            aux.setConnection("phones.db");
+            listaTels = new ObservableTelefono(aux.readContacts());
+            foreach (Telephones t in listaTels)
                 listaTelefonos.ItemsSource = listaTels;
 		}
 
@@ -137,13 +139,13 @@ namespace ProjectDOTNET
 
         private void listaTelefonos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Telefono t = listaTels[listaTelefonos.SelectedIndex];
+            Telephones t = listaTels[listaTelefonos.SelectedIndex];
             try
             {
                 if (skype.get_User(t.Handle).OnlineStatus == SKYPE4COMLib.TOnlineStatus.olsOnline)
                     boxNumero.Text = t.Handle;
                 else
-                    boxNumero.Text = t.Telefono1;
+                    boxNumero.Text = t.Telefono;
                 BitmapSource img = BitmapFrame.Create(new Uri(".\\Contacts\\" + t.Image,UriKind.Relative));
                 contactPic.Source = img;
             }
