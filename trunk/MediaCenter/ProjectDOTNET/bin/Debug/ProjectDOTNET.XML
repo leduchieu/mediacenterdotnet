@@ -4,162 +4,26 @@
         <name>ProjectDOTNET</name>
     </assembly>
     <members>
-        <member name="T:ProjectDOTNET.Window1">
+        <member name="T:ProjectDOTNET.App">
+            <summary>Clase que llama la aplicación al comenzar
+            </summary>
             <summary>
-            Window1
+            App
             </summary>
         </member>
-        <member name="F:ProjectDOTNET.Window1.myDispatcherTimer">
-            <summary>Variable para el reloj
+        <member name="M:ProjectDOTNET.App.MediaCenter_Startup(System.Object,System.Windows.StartupEventArgs)">
+            <summary>Metodo al iniciar la aplicacion
+            <para>Crea una ventana principal y la muestra a pantalla completa <see cref="!:System.Console.WindowState"/> para mas informacion sobre el estado de la ventana.</para>
             </summary>
         </member>
-        <member name="M:ProjectDOTNET.Window1.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>Metodo al iniciar la ventana principal
-            <para>Obtiene la fecha y la muestra en el reloj <see cref="T:System.DateTime"/> para mas informacion sobre la hora.</para>
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.Window1.StartTimer(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>Metodo para iniciar el dispatcher
-            <para>Cada segundo llama a la funcion changeTime <see cref="T:System.Windows.Threading.DispatcherTimer"/> para mas informacion sobre dispatchers.</para>
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.Window1.changeTime(System.Object,System.EventArgs)">
-            <summary>Metodo para cambiar la hora mostrada
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.Window1.InitializeComponent">
+        <member name="M:ProjectDOTNET.App.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.WindowVideo">
-            <summary>Esta clase se encarga de controlar el sistema de video
-            </summary>
+        <member name="M:ProjectDOTNET.App.Main">
             <summary>
-            WindowVideo
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowVideo.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:ProjectDOTNET.WindowGames">
-            <summary>
-            WindowGames
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowGames.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:ProjectDOTNET.WindowRSS">
-            <summary>
-            WindowRSS
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowRSS.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:ProjectDOTNET.WindowMusic">
-            <summary>
-            WindowMusic
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowMusic.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:ProjectDOTNET.WindowImages">
-            <summary>
-            WindowImages
-            </summary>
-        </member>
-        <member name="F:ProjectDOTNET.WindowImages.Photos">
-            <summary>
-            Lista para cargar las fotografias
-            </summary>
-        </member>
-        <member name="F:ProjectDOTNET.WindowImages.currentPic">
-            <summary>
-            Fotografía mostrada en un momento concreto
-            </summary>
-        </member>
-        <member name="F:ProjectDOTNET.WindowImages.myDispatcherTimer2">
-            <summary>
-            Dispatcher para pasar de fotos cada 5 segundos
-            </summary>
-        </member>
-        <member name="F:ProjectDOTNET.WindowImages.playing">
-            <summary>
-            Indica si la transicion esta activa o no
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.#ctor">
-            <summary>Constructor de la clase WindowImages
-            <para>Carga la carpeta \Images en la lista</para>
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.loadImages(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Al crear la ventana de imagenes
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.StartTimer">
-            <summary>
-            Dispatcher para cambiar las imagenes cada 5 segundos
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.UpdatePhoto(System.Object,System.EventArgs)">
-            <summary>
-            Llama a UpdatePicture
-            </summary>
-            <param name="o"></param>
-            <param name="sender"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.UpdatePicture">
-            <summary>
-            Crea una imagen de la foto en curso y le suma uno
-            <para>Llama a la animacion para cambiar la transicion de fotos y modifica el valor de currentPic</para>
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.stopEnter(System.Object,System.Windows.Input.MouseEventArgs)">
-            <summary>
-            Aumenta la visibilidad del boton Stop
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.stopLeave(System.Object,System.Windows.Input.MouseEventArgs)">
-            <summary>
-            Disminuye la visibilidad del boton Stop
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.menuLoad(System.Object,System.Windows.Input.MouseButtonEventArgs)">
-            <summary>
-            Pone en visible el menu al hacer doble clic
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.closeWindow(System.Object,System.Windows.Input.MouseButtonEventArgs)">
-            <summary>
-            Crea una ventana principal y cierra la actual
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:ProjectDOTNET.WindowImages.InitializeComponent">
-            <summary>
-            InitializeComponent
+            Application Entry Point.
             </summary>
         </member>
         <member name="T:ProjectDOTNET.Login">
@@ -172,39 +36,42 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.ImageFile">
-            <summary>Esta clase guarda el path, el path convertido a Uri y un imagen
-            <param name="path">Sirve para indicar el path a la imagen</param>
+        <member name="T:ProjectDOTNET.Window2">
+            <summary>
+            Window2
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.MusicFile">
-            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de música
-            <param name="path">Sirve para indicar el path a la cancion</param>
+        <member name="F:ProjectDOTNET.Window2.myDispatcherTimer">
+            <summary>Variable para el reloj
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.VideoFile">
-            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de video
-            <param name="path">Sirve para indicar el path al video</param>
+        <member name="F:ProjectDOTNET.Window2.selected">
+            <summary>
+            Variable para saber qué esta cargado
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.PhotoList">
-            <summary>Esta clase es una coleccion de archivos ImageFile
-            <param name="path">Sirve para indicar el path al directorio de fotos</param>
+        <member name="M:ProjectDOTNET.Window2.#ctor">
+            <summary>
+            Constructor de window2
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.MusicList">
-            <summary>Esta clase es una coleccion de archivos MusicFile
-            <param name="path">Sirve para indicar el path al directorio de canciones</param>
+        <member name="M:ProjectDOTNET.Window2.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>Metodo al iniciar la ventana principal
+            <para>Obtiene la fecha y la muestra en el reloj <see cref="T:System.DateTime"/> para mas informacion sobre la hora.</para>
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.VideoList">
-            <summary>Esta clase es una coleccion de archivos de Video
-            <param name="path">Sirve para indicar el path al directorio de videos</param>
+        <member name="M:ProjectDOTNET.Window2.StartTimer(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>Metodo para iniciar el dispatcher
+            <para>Cada segundo llama a la funcion changeTime <see cref="T:System.Windows.Threading.DispatcherTimer"/> para mas informacion sobre dispatchers.</para>
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.ObservableTelefono">
-            <summary>Esta clase es una coleccion de objetos Telefono (base de datos)
-            <param name="dataDc">Sirve para indicar el DataContext</param>
+        <member name="M:ProjectDOTNET.Window2.changeTime(System.Object,System.EventArgs)">
+            <summary>Metodo para cambiar la hora mostrada
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.Window2.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="M:ProjectDOTNET.FTPFactory.setRemoteHost(System.String)">
@@ -370,28 +237,6 @@
             
             
         </member>
-        <member name="T:ProjectDOTNET.App">
-            <summary>Clase que llama la aplicación al comenzar
-            </summary>
-            <summary>
-            App
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.App.MediaCenter_Startup(System.Object,System.Windows.StartupEventArgs)">
-            <summary>Metodo al iniciar la aplicacion
-            <para>Crea una ventana principal y la muestra a pantalla completa <see cref="!:System.Console.WindowState"/> para mas informacion sobre el estado de la ventana.</para>
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.App.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.App.Main">
-            <summary>
-            Application Entry Point.
-            </summary>
-        </member>
         <member name="T:ProjectDOTNET.WindowBrowser">
             <summary>
             WindowBrowser
@@ -418,40 +263,205 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:ProjectDOTNET.Window2">
+        <member name="T:ProjectDOTNET.WindowCredits">
             <summary>
-            Window2
+            WindowCredits
             </summary>
         </member>
-        <member name="F:ProjectDOTNET.Window2.myDispatcherTimer">
+        <member name="M:ProjectDOTNET.WindowCredits.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowGames">
+            <summary>
+            WindowGames
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowGames.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowRSS">
+            <summary>
+            WindowRSS
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowRSS.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowVideo">
+            <summary>Esta clase se encarga de controlar el sistema de video
+            </summary>
+            <summary>
+            WindowVideo
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowVideo.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.ImageFile">
+            <summary>Esta clase guarda el path, el path convertido a Uri y un imagen
+            <param name="path">Sirve para indicar el path a la imagen</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.MusicFile">
+            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de música
+            <param name="path">Sirve para indicar el path a la cancion</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.VideoFile">
+            <summary>Esta clase guarda el path y el path convertido a Uri de un archivo de video
+            <param name="path">Sirve para indicar el path al video</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.PhotoList">
+            <summary>Esta clase es una coleccion de archivos ImageFile
+            <param name="path">Sirve para indicar el path al directorio de fotos</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.MusicList">
+            <summary>Esta clase es una coleccion de archivos MusicFile
+            <param name="path">Sirve para indicar el path al directorio de canciones</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.VideoList">
+            <summary>Esta clase es una coleccion de archivos de Video
+            <param name="path">Sirve para indicar el path al directorio de videos</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.ObservableTelefono">
+            <summary>Esta clase es una coleccion de objetos Telefono (base de datos)
+            <param name="dataDc">Sirve para indicar el DataContext</param>
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.Window1">
+            <summary>
+            Window1
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.Window1.myDispatcherTimer">
             <summary>Variable para el reloj
             </summary>
         </member>
-        <member name="F:ProjectDOTNET.Window2.selected">
-            <summary>
-            Variable para saber qué esta cargado
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.Window2.#ctor">
-            <summary>
-            Constructor de window2
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.Window2.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:ProjectDOTNET.Window1.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
             <summary>Metodo al iniciar la ventana principal
             <para>Obtiene la fecha y la muestra en el reloj <see cref="T:System.DateTime"/> para mas informacion sobre la hora.</para>
             </summary>
         </member>
-        <member name="M:ProjectDOTNET.Window2.StartTimer(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:ProjectDOTNET.Window1.StartTimer(System.Object,System.Windows.RoutedEventArgs)">
             <summary>Metodo para iniciar el dispatcher
             <para>Cada segundo llama a la funcion changeTime <see cref="T:System.Windows.Threading.DispatcherTimer"/> para mas informacion sobre dispatchers.</para>
             </summary>
         </member>
-        <member name="M:ProjectDOTNET.Window2.changeTime(System.Object,System.EventArgs)">
+        <member name="M:ProjectDOTNET.Window1.changeTime(System.Object,System.EventArgs)">
             <summary>Metodo para cambiar la hora mostrada
             </summary>
         </member>
-        <member name="M:ProjectDOTNET.Window2.InitializeComponent">
+        <member name="M:ProjectDOTNET.Window1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowImages">
+            <summary>
+            WindowImages
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.WindowImages.Photos">
+            <summary>
+            Lista para cargar las fotografias
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.WindowImages.currentPic">
+            <summary>
+            Fotografía mostrada en un momento concreto
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.WindowImages.myDispatcherTimer2">
+            <summary>
+            Dispatcher para pasar de fotos cada 5 segundos
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.WindowImages.playing">
+            <summary>
+            Indica si la transicion esta activa o no
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.#ctor">
+            <summary>Constructor de la clase WindowImages
+            <para>Carga la carpeta \Images en la lista</para>
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.loadImages(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Al crear la ventana de imagenes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.StartTimer">
+            <summary>
+            Dispatcher para cambiar las imagenes cada 5 segundos
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.UpdatePhoto(System.Object,System.EventArgs)">
+            <summary>
+            Llama a UpdatePicture
+            </summary>
+            <param name="o"></param>
+            <param name="sender"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.UpdatePicture">
+            <summary>
+            Crea una imagen de la foto en curso y le suma uno
+            <para>Llama a la animacion para cambiar la transicion de fotos y modifica el valor de currentPic</para>
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.stopEnter(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Aumenta la visibilidad del boton Stop
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.stopLeave(System.Object,System.Windows.Input.MouseEventArgs)">
+            <summary>
+            Disminuye la visibilidad del boton Stop
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.menuLoad(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Pone en visible el menu al hacer doble clic
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.closeWindow(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Crea una ventana principal y cierra la actual
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ProjectDOTNET.WindowImages.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ProjectDOTNET.WindowMusic">
+            <summary>
+            WindowMusic
+            </summary>
+        </member>
+        <member name="M:ProjectDOTNET.WindowMusic.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -462,16 +472,6 @@
             </summary>
         </member>
         <member name="M:ProjectDOTNET.WindowPhone.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="T:ProjectDOTNET.WindowCredits">
-            <summary>
-            WindowCredits
-            </summary>
-        </member>
-        <member name="M:ProjectDOTNET.WindowCredits.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>

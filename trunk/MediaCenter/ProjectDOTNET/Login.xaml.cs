@@ -32,7 +32,12 @@ namespace ProjectDOTNET
             this.Close();
         }
 
-        private void detectarHuella(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void settingsClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void detectarHuella(object sender, RoutedEventArgs e)
         {
             String aux = this.fingerprintReader.readFinger();
             if (aux != null)
@@ -43,11 +48,6 @@ namespace ProjectDOTNET
                 w.Show();
                 this.Close();
             }
-        }
-
-        private void settingsClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
         }
 	}
 }
