@@ -49,6 +49,11 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Data.Entity" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
@@ -72,19 +77,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+kgKtZ2FscWUXnfNAuiNa69QPg8=</dsig:DigestValue>
+        <dsig:DigestValue>kJERq8jvo9yhWjugZY1rzr6uS+0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ProjectDOTNET.exe" size="3398144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ProjectDOTNET.exe" size="3506176">
       <assemblyIdentity name="ProjectDOTNET" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9FjLoNlBWdn0HxJG2h3Cx/GWBJI=</dsig:DigestValue>
+        <dsig:DigestValue>swMIUYjbrQJVlZoS+JZgO4ZQD64=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,13 +102,13 @@
       <dsig:DigestValue>a8Nzbks6xiQL08QnHjTZf0/+fxk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ProjectDOTNET.exe.config" size="674">
+  <file name="ProjectDOTNET.exe.config" size="916">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>0D+CHSN686zV54lTrYYQyfeI8qc=</dsig:DigestValue>
+      <dsig:DigestValue>JujKNKWxIUMEWkBeE215bPEDZtc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

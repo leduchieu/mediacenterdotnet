@@ -16,7 +16,7 @@
     <ManifestCertificateThumbprint>FBCF5D7E38C3CF24E1BFAA5BABF85C1F63B3E6C2</ManifestCertificateThumbprint>
     <ManifestKeyFile>ProjectDOTNET_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -43,6 +43,10 @@
       <HintPath>bin\Debug\3DTools-1.01-bin\3DTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.1.0.0, Culture=neutral, PublicKeyToken=96eee45103d523d1">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\HUELLAS\HUELLAS\bin\Debug\NITGEN.SDK.NBioBSP.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -56,6 +60,10 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\HUELLAS\HUELLAS\bin\Debug\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <ApplicationDefinition Include="App.xaml">
@@ -66,6 +74,21 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="WindowPhone2.xaml.cs">
+      <DependentUpon>WindowPhone2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBFactory.cs" />
+    <Compile Include="EnrollFail.cs" />
+    <Compile Include="IDB.cs" />
+    <Compile Include="IFinger.cs" />
+    <Compile Include="Nitgen.cs" />
+    <Compile Include="NotDatabaseNameDefine.cs" />
+    <Compile Include="OpenFailed.cs" />
+    <Compile Include="Sqlite.cs" />
+    <Compile Include="Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ftp.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -74,7 +97,6 @@
     <Compile Include="Telefonos.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Telefonos.dbml</DependentUpon>
     </Compile>
     <Compile Include="WindowBrowser.xaml.cs">
       <DependentUpon>WindowBrowser.xaml</DependentUpon>
@@ -104,6 +126,14 @@
     <Compile Include="WindowPhone.xaml.cs">
       <DependentUpon>WindowPhone.xaml</DependentUpon>
     </Compile>
+    <Page Include="WindowPhone2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="WindowBrowser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,6 +181,7 @@
     <Resource Include="Utils\cancel.png" />
     <Resource Include="Utils\Clock.png" />
     <Resource Include="Utils\Credits.png" />
+    <Resource Include="Utils\down.png" />
     <Resource Include="Utils\Exit.png" />
     <Resource Include="Utils\GamesWall.jpg" />
     <Resource Include="Utils\Images.png" />
@@ -160,12 +191,15 @@
     <Resource Include="Utils\Nature.png" />
     <Resource Include="Utils\Nature_big.jpg" />
     <Resource Include="Utils\Next.png" />
+    <Resource Include="Utils\Pacman.png" />
     <Resource Include="Utils\Phone.png" />
     <Resource Include="Utils\Play.png" />
     <Resource Include="Utils\RSS.png" />
     <Resource Include="Utils\Shinju.JPG" />
     <Resource Include="Utils\Start.png" />
     <Resource Include="Utils\Stop.png" />
+    <Resource Include="Utils\uni_fondo.jpg" />
+    <Resource Include="Utils\up.png" />
     <Resource Include="Utils\Video.png" />
     <Resource Include="Utils\Wallpaper.jpg" />
   </ItemGroup>

@@ -30,13 +30,10 @@ namespace ProjectDOTNET
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTelefono(Telefono instance);
-    partial void UpdateTelefono(Telefono instance);
-    partial void DeleteTelefono(Telefono instance);
     #endregion
 		
 		public TelefonosDataContext() : 
-				base(global::ProjectDOTNET.Properties.Settings.Default.TelefonosConnectionString1, mappingSource)
+				base(global::ProjectDOTNET.Properties.Settings.Default.TelefonosConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -75,10 +72,8 @@ namespace ProjectDOTNET
 	}
 	
 	[Table(Name="dbo.Telefonos")]
-	public partial class Telefono : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Telefono
 	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _Nombre;
 		
@@ -90,25 +85,10 @@ namespace ProjectDOTNET
 		
 		private string _Telefono1;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNombreChanging(string value);
-    partial void OnNombreChanged();
-    partial void OnApellidosChanging(string value);
-    partial void OnApellidosChanged();
-    partial void OnDNIChanging(decimal value);
-    partial void OnDNIChanged();
-    partial void OnHandleChanging(string value);
-    partial void OnHandleChanged();
-    partial void OnTelefono1Changing(string value);
-    partial void OnTelefono1Changed();
-    #endregion
+		private string _Image;
 		
 		public Telefono()
 		{
-			OnCreated();
 		}
 		
 		[Column(Storage="_Nombre", DbType="NVarChar(50)")]
@@ -122,11 +102,7 @@ namespace ProjectDOTNET
 			{
 				if ((this._Nombre != value))
 				{
-					this.OnNombreChanging(value);
-					this.SendPropertyChanging();
 					this._Nombre = value;
-					this.SendPropertyChanged("Nombre");
-					this.OnNombreChanged();
 				}
 			}
 		}
@@ -142,16 +118,12 @@ namespace ProjectDOTNET
 			{
 				if ((this._Apellidos != value))
 				{
-					this.OnApellidosChanging(value);
-					this.SendPropertyChanging();
 					this._Apellidos = value;
-					this.SendPropertyChanged("Apellidos");
-					this.OnApellidosChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_DNI", DbType="Decimal(8,0) NOT NULL", IsPrimaryKey=true)]
+		[Column(Storage="_DNI", DbType="Decimal(8,0) NOT NULL")]
 		public decimal DNI
 		{
 			get
@@ -162,11 +134,7 @@ namespace ProjectDOTNET
 			{
 				if ((this._DNI != value))
 				{
-					this.OnDNIChanging(value);
-					this.SendPropertyChanging();
 					this._DNI = value;
-					this.SendPropertyChanged("DNI");
-					this.OnDNIChanged();
 				}
 			}
 		}
@@ -182,11 +150,7 @@ namespace ProjectDOTNET
 			{
 				if ((this._Handle != value))
 				{
-					this.OnHandleChanging(value);
-					this.SendPropertyChanging();
 					this._Handle = value;
-					this.SendPropertyChanged("Handle");
-					this.OnHandleChanged();
 				}
 			}
 		}
@@ -202,32 +166,24 @@ namespace ProjectDOTNET
 			{
 				if ((this._Telefono1 != value))
 				{
-					this.OnTelefono1Changing(value);
-					this.SendPropertyChanging();
 					this._Telefono1 = value;
-					this.SendPropertyChanged("Telefono1");
-					this.OnTelefono1Changed();
 				}
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
+		[Column(Storage="_Image", DbType="NVarChar(100)")]
+		public string Image
 		{
-			if ((this.PropertyChanging != null))
+			get
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				return this._Image;
 			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
+			set
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				if ((this._Image != value))
+				{
+					this._Image = value;
+				}
 			}
 		}
 	}

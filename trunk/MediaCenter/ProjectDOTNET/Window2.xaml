@@ -1,0 +1,474 @@
+﻿<Window
+	xmlns:pd="clr-namespace:ProjectDOTNET"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="ProjectDOTNET.Window2"
+	x:Name="Window"
+	Title="Start"
+	Width="1280" Height="1024" Cursor="Hand" WindowStyle="None" HorizontalAlignment="Stretch" Loaded="Window_Loaded" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET" Activated="ResumeTimer">
+	<Window.Resources>
+		<Storyboard x:Key="closeEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="close" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="estiloBotonMusica" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Música" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="estiloBotonVideo" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Vídeo" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="estiloBotonRSS" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Text="RSS" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="estiloBotonCreditos" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Créditos" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="closeLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="close" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.495"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="estiloBotonImagenes" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Imágenes" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ButtonStyle1" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" RadiusX="4.5" RadiusY="4.5"/>
+							<TextBlock Margin="8,8,8,8" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="#FFF99494"><Run Text="1" Language="es-es"/></TextBlock>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="OnMouseEnter1">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="OnMouseLeave1">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="estiloBotonTelefono" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock"><Run Text="Teléfono" Language="es-es"/></TextBlock>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="windowLoad">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="{x:Null}">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="estiloBotonGames" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="OnMouseEnter1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.65"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="OnMouseLeave1">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.7"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Stroke="#FF2FFF07" RadiusX="10" RadiusY="10" Opacity="0.4" StrokeThickness="4" x:Name="rectangle">
+								<Rectangle.BitmapEffect>
+									<BevelBitmapEffect/>
+								</Rectangle.BitmapEffect>
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+										<GradientStop Color="#FF5BD052" Offset="0.009"/>
+										<GradientStop Color="#FF5AD051" Offset="1"/>
+										<GradientStop Color="#FF206C1A" Offset="0.496"/>
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<TextBlock Margin="0,0,35,0" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="38" Foreground="#FFFDFDFD" Opacity="0.695" FontFamily="Bradley Hand ITC" FontWeight="ExtraBold" x:Name="textBlock" Text="Juegos"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseLeave1}" x:Name="OnMouseLeave1_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="upEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imageUp">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="upLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imageUp">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="downEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imageDown">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="downLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imageDown">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="close">
+			<BeginStoryboard Storyboard="{StaticResource closeEnter}" x:Name="closeEnter_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="close">
+			<BeginStoryboard Storyboard="{StaticResource closeLeave}" x:Name="closeEnter_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource windowLoad}" x:Name="windowLoad_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="imageUp">
+			<BeginStoryboard Storyboard="{StaticResource upEnter}" x:Name="upEnter_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="imageUp">
+			<BeginStoryboard Storyboard="{StaticResource upLeave}" x:Name="upLeave_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="imageDown">
+			<BeginStoryboard Storyboard="{StaticResource downEnter}" x:Name="downEnter_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="imageDown">
+			<BeginStoryboard Storyboard="{StaticResource downLeave}" x:Name="downLeave_BeginStoryboard1"/>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Image Margin="0,0,0,0" Source="/Utils/Start.png" Stretch="Fill"/>
+		<Image HorizontalAlignment="Left" Margin="70,70,0,0" VerticalAlignment="Top" Width="79.99" Height="79.99" Source="Utils\Clock.png" Stretch="Fill" Opacity="0.495"/>
+		<TextBlock Loaded="StartTimer" HorizontalAlignment="Left" Margin="180,75,0,0" VerticalAlignment="Top" Width="285" Height="65" d:IsStaticText="True" TextWrapping="Wrap" x:Name="textTime" Opacity="0.5" FontFamily="Perpetua" FontSize="60" FontWeight="ExtraBold" Foreground="#FFFFFFFF"><Run FontFamily="./Fonts\#Perpetua Titling MT" FontSize="60" FontWeight="ExtraBold" Foreground="#FFFFFFFF" Language="es-es" Text="00:00:00"/></TextBlock>
+		<Image HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Height="60" Source="Utils\Exit.png" Stretch="Fill" Margin="0,75,60,0" RenderTransformOrigin="0.5,0.708" Opacity="0.495" x:Name="close" MouseLeftButtonUp="close_MouseLeftButtonUp"/>
+		<Image Source="Utils\Images.png" Stretch="Fill" Margin="100,0,0,450" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Height="100" Opacity="0.595" x:Name="imagePics" Visibility="Visible">
+			<Image.BitmapEffect>
+				<DropShadowBitmapEffect/>
+			</Image.BitmapEffect>
+		</Image>
+		<Image HorizontalAlignment="Left" Width="100" Source="Utils\Music.png" Stretch="Fill" Margin="120,0,0,450" Opacity="0.595" x:Name="imageMusic" Height="100" VerticalAlignment="Center" Visibility="Visible"/>
+		<Image HorizontalAlignment="Left" Width="256" Source="Utils\Video.png" Stretch="Fill" x:Name="imageVideo" Margin="140,0,0,0" Opacity="0.895" Height="256" VerticalAlignment="Center" Visibility="Visible"/>
+		<Image Opacity="0.595" HorizontalAlignment="Left" Margin="160,450,0,0" VerticalAlignment="Center" Width="150" Height="87" Source="Utils\RSS.png" Stretch="Fill" x:Name="imageRSS" Visibility="Visible"/>
+		<Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="100" Source="Utils\Phone.png" Stretch="Fill" x:Name="imagePhone" Opacity="0.595" Visibility="Visible" Margin="180,450,0,0"/>
+		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="48" Height="48" Source="Utils\up.png" Stretch="Fill" Margin="0,0,0,500" x:Name="imageUp" Opacity="0.6"/>
+		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="48" Height="48" Source="Utils\down.png" Stretch="Fill" Margin="0,500,0,0" x:Name="imageDown" Opacity="0.6"/>
+		<TextBlock Margin="250,0,0,0" TextWrapping="Wrap" x:Name="textoSelec" FontSize="48" Height="58" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" FontFamily="Minya Nouvelle" Foreground="#FFFFFFFF" Opacity="0.75" Text="VÍDEOS"/>
+	</Grid>
+</Window>

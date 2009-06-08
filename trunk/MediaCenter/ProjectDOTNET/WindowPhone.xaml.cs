@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Linq;
+using System.Windows.Media.Imaging;
 
 namespace ProjectDOTNET
 {
@@ -30,9 +31,14 @@ namespace ProjectDOTNET
 			this.InitializeComponent();
 			// Insert code required on object creation below this point.
             skype = new SKYPE4COMLib.Skype();
-            skype.Attach(8,false);
-            //skype.Client.Start(true, true);
+            if (skype.Client.IsRunning == false)
+            {
+                skype.Client.Start(true, true);
+                System.Threading.Thread.Sleep(new TimeSpan(0, 0, 15));
+            }
+            skype.Attach(9,true);       
             skype.SilentMode = true;
+            llamada = null;
             // Base de datos
             listaTels = new ObservableTelefono(dataDC);
             foreach (Telefono t in listaTels)
@@ -113,33 +119,47 @@ namespace ProjectDOTNET
 
         private void ButtonCall_Click(object sender, RoutedEventArgs e)
         {
-            if (boxNumero.Text.Contains("Introduzca"))
-                boxNumero.IsReadOnly = false;
-            else
+            if (llamada == null)
             {
-                if (boxNumero.IsReadOnly == true)
-                    llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
+                if (boxNumero.Text.Contains("Introduzca"))
+                    boxNumero.IsReadOnly = false;
                 else
-                    llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
-                boxNumero.IsReadOnly = true;
-                
+                {
+                    if (boxNumero.IsReadOnly == true)
+                        llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
+                    else
+                        llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
+                    boxNumero.IsReadOnly = true;
+                    
+                }
             }
         }
 
         private void listaTelefonos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int selected = listaTelefonos.SelectedIndex;
-            Telefono t = listaTels[selected];
-            if (skype.get_User(t.Handle).OnlineStatus == SKYPE4COMLib.TOnlineStatus.olsOnline)
-                boxNumero.Text = t.Handle;
-            else
-                boxNumero.Text = t.Telefono1;
+            Telefono t = listaTels[listaTelefonos.SelectedIndex];
+            try
+            {
+                if (skype.get_User(t.Handle).OnlineStatus == SKYPE4COMLib.TOnlineStatus.olsOnline)
+                    boxNumero.Text = t.Handle;
+                else
+                    boxNumero.Text = t.Telefono1;
+                BitmapSource img = BitmapFrame.Create(new Uri(".\\Contacts\\" + t.Image,UriKind.Relative));
+                contactPic.Source = img;
+            }
+            catch (Exception ex)
+            {
+                // Tratamiento aqui
+            }            
         }
 
         private void ButtonHang_Click(object sender, RoutedEventArgs e)
         {
-            if (llamada.Status == SKYPE4COMLib.TCallStatus.clsInProgress)
+            if (llamada != null)
+            {
                 llamada.Finish();
+                llamada = null;
+            }
         }
 
         private void Image_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

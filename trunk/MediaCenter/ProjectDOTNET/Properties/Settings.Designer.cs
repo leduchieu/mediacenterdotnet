@@ -43,5 +43,15 @@ namespace ProjectDOTNET.Properties {
                 return ((string)(this["TelefonosConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=macbook-zor;Initial Catalog=Telefonos;Integrated Security=True")]
+        public string TelefonosConnectionString2 {
+            get {
+                return ((string)(this["TelefonosConnectionString2"]));
+            }
+        }
     }
 }

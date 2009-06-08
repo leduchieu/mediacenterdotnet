@@ -17,11 +17,26 @@ namespace ProjectDOTNET
 {
 	public partial class WindowImages
 	{
+        /// <summary>
+        /// Lista para cargar las fotografias
+        /// </summary>
         private PhotoList Photos;
+        /// <summary>
+        /// Fotografía mostrada en un momento concreto
+        /// </summary>
         private int currentPic;
+        /// <summary>
+        /// Dispatcher para pasar de fotos cada 5 segundos
+        /// </summary>
         private System.Windows.Threading.DispatcherTimer myDispatcherTimer2;
+        /// <summary>
+        /// Indica si la transicion esta activa o no
+        /// </summary>
         private bool playing = false;
 
+        /// <summary>Constructor de la clase WindowImages
+        /// <para>Carga la carpeta \Images en la lista</para>
+        /// </summary>
         public WindowImages()
 		{
 			this.InitializeComponent();
@@ -31,7 +46,12 @@ namespace ProjectDOTNET
 		}
 
 
-        // Al crear la ventana de imagenes
+        /// <summary>
+        /// Al crear la ventana de imagenes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void loadImages(object sender, RoutedEventArgs e)
         {
             BitmapSource img = BitmapFrame.Create(new Uri(Photos[0].Path.ToString()));
@@ -40,7 +60,9 @@ namespace ProjectDOTNET
             StartTimer();
         }
 
-        // Dispatcher para cambiar las imagenes cada 5 segundos
+        /// <summary>
+        /// Dispatcher para cambiar las imagenes cada 5 segundos
+        /// </summary>
         private void StartTimer()
         {
             myDispatcherTimer2 = new System.Windows.Threading.DispatcherTimer();
@@ -50,11 +72,20 @@ namespace ProjectDOTNET
             playing = true;
         }
 
+        /// <summary>
+        /// Llama a UpdatePicture
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="sender"></param>
         private void UpdatePhoto(object o, EventArgs sender) 
         {
             this.UpdatePicture();
         }
 
+        /// <summary>
+        /// Crea una imagen de la foto en curso y le suma uno
+        /// <para>Llama a la animacion para cambiar la transicion de fotos y modifica el valor de currentPic</para>
+        /// </summary>
         private void UpdatePicture()
         {
             BitmapSource img = BitmapFrame.Create(new Uri(Photos[currentPic].Path.ToString()));
@@ -77,16 +108,32 @@ namespace ProjectDOTNET
             else
                 currentPic = currentPic + 1;
         }
+
+        /// <summary>
+        /// Aumenta la visibilidad del boton Stop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void stopEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             Stop.Opacity = 1;
         }
 
+        /// <summary>
+        /// Disminuye la visibilidad del boton Stop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void stopLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             Stop.Opacity = 0.65;
         }
 
+        /// <summary>
+        /// Pone en visible el menu al hacer doble clic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuLoad(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (Play.Visibility == Visibility.Collapsed)
@@ -117,6 +164,11 @@ namespace ProjectDOTNET
             Cancel.Opacity = 0.65;
         }
 
+        /// <summary>
+        /// Crea una ventana principal y cierra la actual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Window1 w1 = new Window1();
