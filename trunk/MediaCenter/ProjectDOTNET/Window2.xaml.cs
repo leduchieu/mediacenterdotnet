@@ -16,6 +16,14 @@ namespace ProjectDOTNET
         /// </summary>
         public System.Windows.Threading.DispatcherTimer myDispatcherTimer;
 
+        /// <summary>
+        /// Variable para saber qué esta cargado
+        /// </summary>
+        private string selected = "images";
+
+        /// <summary>
+        /// Constructor de window2
+        /// </summary>
 		public Window2()
 		{
 			this.InitializeComponent();
@@ -80,66 +88,91 @@ namespace ProjectDOTNET
             this.Close();
         }
 
-        private void images_Click(object sender, RoutedEventArgs e)
-        {
-            WindowImages wi = new WindowImages();
-            wi.WindowState = WindowState.Maximized;
-            wi.Show();
-            this.Close();
-        }
-
         private void ResumeTimer(object sender, EventArgs e)
         {
             if (myDispatcherTimer != null)
                 myDispatcherTimer.Start();
         }
 
-        private void telefono_Click(object sender, RoutedEventArgs e)
+        private void text_Click(object sender, RoutedEventArgs e)
         {
-            WindowPhone wp = new WindowPhone();
-            wp.WindowState = WindowState.Maximized;
-            wp.Show();
-            this.Close();
-        }
-
-        private void music_Click(object sender, RoutedEventArgs e)
-        {
-            WindowMusic wm = new WindowMusic();
-            wm.WindowState = WindowState.Maximized;
-            wm.Show();
-            this.Close();
-        }
-
-        private void video_Click(object sender, RoutedEventArgs e)
-        {
-            WindowVideo wv = new WindowVideo();
-            wv.WindowState = WindowState.Maximized;
-            wv.Show();
-            this.Close();
-        }
-
-        private void RSS_Click(object sender, RoutedEventArgs e)
-        {
-            WindowRSS wr = new WindowRSS();
-            wr.WindowState = WindowState.Maximized;
-            wr.Show();
-            this.Close();
-        }
-
-        private void Credits_Click(object sender, RoutedEventArgs e)
-        {
-            WindowCredits wc = new WindowCredits();
-            wc.WindowState = WindowState.Maximized;
-            wc.Show();
-            this.Close();
-        }
-
-        private void juegos_Click(object sender, RoutedEventArgs e)
-        {
-            WindowGames wg = new WindowGames();
+            Window wg = null;
+            switch (selected)
+            {
+                case "images": wg = new WindowImages(); break;
+                case "music": wg = new WindowMusic(); break;
+                case "videos": wg = new WindowVideo(); break;
+                case "news": wg = new WindowRSS(); break;
+                case "phone": wg = new WindowPhone(); break;
+                case "games": wg = new WindowGames(); break;
+            }
             wg.WindowState = WindowState.Maximized;
             wg.Show();
             this.Close();
+        }
+
+        private void actionUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Storyboard s = null;
+            if (selected == "images")
+            {
+                s = (Storyboard)this.FindResource("imagesUp");
+                selected = "music";
+            }
+            else if (selected == "music")
+            {
+                s = (Storyboard)this.FindResource("musicUp");
+                selected = "videos";
+            }
+            else if (selected == "videos")
+            {
+                s = (Storyboard)this.FindResource("videoUp");
+                selected = "news";
+            }
+            else if (selected == "news")
+            {
+                s = (Storyboard)this.FindResource("newsUp");
+                selected = "phone";
+            }
+            else if (selected == "phone")
+            {
+                s = (Storyboard)this.FindResource("phoneUp");
+                selected = "games";
+            }
+            if (s != null)
+                this.BeginStoryboard(s);
+        }
+
+        private void actionDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Storyboard s = null;
+            if (selected == "music")
+            {
+                s = (Storyboard)this.FindResource("musicDown");
+                selected = "images";
+            }
+            else if (selected == "videos")
+            {
+                s = (Storyboard)this.FindResource("videoDown");
+                selected = "music";
+            }
+            else if (selected == "news")
+            {
+                s = (Storyboard)this.FindResource("newsDown");
+                selected = "videos";
+            }
+            else if (selected == "phone")
+            {
+                s = (Storyboard)this.FindResource("phoneDown");
+                selected = "news";
+            }
+            else if (selected == "games")
+            {
+                s = (Storyboard)this.FindResource("gamesDown");
+                selected = "phone";
+            }
+            if (s != null)
+                this.BeginStoryboard(s);
         }
 	}
 }
