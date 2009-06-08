@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="NITGEN.SDK.NBioBSP, Version=1.1.0.0, Culture=neutral, PublicKeyToken=96eee45103d523d1">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Archivos de programa\NITGEN eNBSP\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Archivos de programa\NITGEN eNBSP\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

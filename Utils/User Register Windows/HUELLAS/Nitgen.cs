@@ -32,7 +32,8 @@ namespace HUELLAS
             {
                 m_textFIR.TextFIR = fingerprint;
                
-                ret = m_NBioAPI.Verify(m_textFIR, out result, null);
+                ret = m_NBioAPI.Verify(m_textFIR, out result,null);
+                
                 if (ret == NBioAPI.Error.NONE && result)
                 {
                     return db.getUser(fingerprint);
@@ -47,7 +48,7 @@ namespace HUELLAS
             //myPayload.Data = textPayload.Text;
 
             uint ret = m_NBioAPI.Enroll(ref m_hNewFIR, out m_hNewFIR, null, NBioAPI.Type.TIMEOUT.DEFAULT, null, null);
-
+           
             if (ret == NBioAPI.Error.NONE)
             {
                 // If you want to save fir data then this FIR data write to DB or File.
