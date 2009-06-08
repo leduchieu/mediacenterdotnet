@@ -39,10 +39,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="System.Data.SQLite.DLL">
-      <HintPath>..\..\..\ProjectDOTNET\ProjectDOTNET\bin\Debug\System.Data.SQLite.DLL</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="3DTools.dll">
       <HintPath>bin\Debug\3DTools-1.01-bin\3DTools.dll</HintPath>
       <Private>True</Private>
@@ -81,6 +77,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Telephones.cs" />
     <Compile Include="DBFactory.cs" />
     <Compile Include="EnrollFail.cs" />
