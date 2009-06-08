@@ -7,6 +7,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
+using System.Windows.Media.Imaging;
 
 namespace ProjectDOTNET
 {
@@ -18,11 +19,17 @@ namespace ProjectDOTNET
         private int horas;
         private int minutos;
         private int segundos;
+        private int inactivo;
 
         /// <summary>
         /// Variable para saber qué esta cargado
         /// </summary>
         private string selected = "images";
+
+        /// <summary>
+        /// Variable para saber sonido
+        /// </summary>
+        private bool sonido = true;
 
         /// <summary>
         /// Constructor de window2
@@ -77,6 +84,7 @@ namespace ProjectDOTNET
                 hours = "0" + dt.Hour;
             else hours = "" + dt.Hour;
             this.textTime.Text = hours + ":" + minutes + ":" + seconds;
+            inactivo = 0;
         }
 
         /// <summary>Metodo para iniciar el dispatcher
@@ -124,6 +132,16 @@ namespace ProjectDOTNET
                 hours = "0" + horas;
             else hours = "" + horas;
             this.textTime.Text = hours+":"+minutes+":"+seconds;
+            if (inactivo == 10)
+            {
+                myDispatcherTimer.Stop();
+                WindowScreenSaver wsc = new WindowScreenSaver(this.sonido);
+                wsc.WindowState = WindowState.Maximized;
+                wsc.Show();
+                this.Close();
+            }
+            else
+                inactivo++;
         }
 
         private void close_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -216,6 +234,22 @@ namespace ProjectDOTNET
             }
             if (s != null)
                 this.BeginStoryboard(s);
+        }
+
+        private void noInactive(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            inactivo = 0;
+        }
+
+        private void changeVol(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            BitmapSource img = null;
+            if (sonido)
+                img = BitmapFrame.Create(new Uri(".\\Utils\\audio-volume-muted.png",UriKind.Relative));
+            else
+                img = BitmapFrame.Create(new Uri(".\\Utils\\stock_volume-max.png",UriKind.Relative));
+            sonido = !sonido;
+            this.imgVol.Source = img;
         }
 	}
 }

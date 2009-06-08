@@ -6,7 +6,7 @@
 	x:Class="ProjectDOTNET.Window2"
 	x:Name="Window"
 	Title="Start"
-	Width="1280" Height="1024" Cursor="Hand" WindowStyle="None" HorizontalAlignment="Stretch" Loaded="Window_Loaded" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET" Activated="ResumeTimer">
+	Width="1280" Height="1024" Cursor="Hand" WindowStyle="None" HorizontalAlignment="Stretch" Loaded="Window_Loaded" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET" Activated="ResumeTimer" MouseMove="noInactive">
 	<Window.Resources>
 		<Storyboard x:Key="closeEnter">
 			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="close" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -1395,5 +1395,6 @@
 		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Source="Utils\up.png" Stretch="Fill" Margin="225,0,0,500" x:Name="imageUp" Opacity="0.6" MouseLeftButtonUp="actionUp"/>
 		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Source="Utils\down.png" Stretch="Fill" Margin="225,500,0,0" x:Name="imageDown" Opacity="0.6" MouseLeftButtonUp="actionDown"/>
 		<TextBlock Margin="250,0,0,0" TextWrapping="Wrap" x:Name="textoSelec" FontSize="48" Height="58" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" FontFamily="Minya Nouvelle" Foreground="#FFFFFFFF" Opacity="0.75" Text="IMÁGENES" MouseLeftButtonUp="text_Click"/>
+		<Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="150" Source="Utils\stock_volume-max.png" Stretch="Fill" Margin="0,0,30,30" Opacity="0.695" x:Name="imgVol" MouseLeftButtonUp="changeVol"/>
 	</Grid>
 </Window>
