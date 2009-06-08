@@ -1392,8 +1392,8 @@
 		<Image Opacity="0" HorizontalAlignment="Left" Margin="160,450,0,0" VerticalAlignment="Center" Width="150" Height="87" Source="Utils\RSS.png" Stretch="Fill" x:Name="imageRSS" Visibility="Collapsed"/>
 		<Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="100" Source="Utils\Phone.png" Stretch="Fill" x:Name="imagePhone" Opacity="0" Visibility="Collapsed" Margin="180,450,0,0"/>
 		<Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="100" Source="Utils\Pacman.png" Stretch="Fill" x:Name="imagePac" Margin="200,450,0,0" Opacity="0" Visibility="Collapsed"/>
-		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="48" Height="48" Source="Utils\up.png" Stretch="Fill" Margin="0,0,0,500" x:Name="imageUp" Opacity="0.6" MouseLeftButtonUp="actionUp"/>
-		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="48" Height="48" Source="Utils\down.png" Stretch="Fill" Margin="0,500,0,0" x:Name="imageDown" Opacity="0.6" MouseLeftButtonUp="actionDown"/>
+		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Source="Utils\up.png" Stretch="Fill" Margin="225,0,0,500" x:Name="imageUp" Opacity="0.6" MouseLeftButtonUp="actionUp"/>
+		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Source="Utils\down.png" Stretch="Fill" Margin="225,500,0,0" x:Name="imageDown" Opacity="0.6" MouseLeftButtonUp="actionDown"/>
 		<TextBlock Margin="250,0,0,0" TextWrapping="Wrap" x:Name="textoSelec" FontSize="48" Height="58" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" FontFamily="Minya Nouvelle" Foreground="#FFFFFFFF" Opacity="0.75" Text="IMÁGENES" MouseLeftButtonUp="text_Click"/>
 	</Grid>
 </Window>
