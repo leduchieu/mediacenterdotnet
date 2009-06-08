@@ -21,7 +21,20 @@ namespace ProjectDOTNET
 
         private void close(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Window2 w = new Window2();
+            w.WindowState = WindowState.Maximized;
+            w.Show();
             this.Close();
+        }
+
+        private void detectarHuella(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void settingsClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
 	}
 }

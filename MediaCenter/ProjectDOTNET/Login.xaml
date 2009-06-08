@@ -18,6 +18,24 @@
 				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.595"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Storyboard x:Key="settEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="settingsImg" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FFD45454"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="settLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="settingsImg" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.6"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 	</Window.Resources>
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="closeImg">
@@ -25,6 +43,16 @@
 		</EventTrigger>
 		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="closeImg">
 			<BeginStoryboard Storyboard="{StaticResource closeLeave}" x:Name="closeLeave_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="settingsImg">
+			<BeginStoryboard Storyboard="{StaticResource settEnter}" x:Name="settEnter_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="settingsImg">
+			<BeginStoryboard Storyboard="{StaticResource settLeave}" x:Name="settLeave_BeginStoryboard"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource settEnter}" x:Name="settEnter_BeginStoryboard1"/>
+			<BeginStoryboard Storyboard="{StaticResource settLeave}" x:Name="settLeave_BeginStoryboard1"/>
 		</EventTrigger>
 	</Window.Triggers>
 
@@ -35,5 +63,8 @@
 		  </Rectangle.Fill>
 		</Rectangle>
 		<Image HorizontalAlignment="Right" VerticalAlignment="Top" Width="48" Height="48" Source="Utils\cancel.png" Stretch="Fill" Margin="0,30,30,0" Opacity="0.595" x:Name="closeImg" MouseLeftButtonUp="close"/>
+		<TextBlock Margin="0,50,0,0" VerticalAlignment="Top" Height="87" Text="Bienvenido al sistema" TextWrapping="Wrap" FontSize="48" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#97D45454" x:Name="textBlock"/>
+		<TextBlock Margin="0,50,0,0" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" Text="Pulse AQUI para logearse" Foreground="#D7000000" MouseLeftButtonUp="detectarHuella"/>
+		<Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="50" Source="Utils\settings.png" Stretch="Fill" Margin="0,0,30,30" Opacity="0" x:Name="settingsImg" MouseLeftButtonUp="settingsClick"/>
 	</Grid>
 </Window>

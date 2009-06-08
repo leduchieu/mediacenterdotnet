@@ -201,6 +201,7 @@
     <Resource Include="Utils\Phone.png" />
     <Resource Include="Utils\Play.png" />
     <Resource Include="Utils\RSS.png" />
+    <Resource Include="Utils\settings.png" />
     <Resource Include="Utils\Shinju.JPG" />
     <Resource Include="Utils\Start.png" />
     <Resource Include="Utils\Stop.png" />
