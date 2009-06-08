@@ -525,6 +525,26 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Storyboard x:Key="gamesBoard">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imagePac">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imagePac">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="gamesBoard2">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="imagePac">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.6"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="imagePac">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
 	</Window.Resources>
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="close">
@@ -554,6 +574,8 @@
 			<BeginStoryboard Storyboard="{StaticResource phoneBoard}" x:Name="phoneBoard_BeginStoryboard"/>
 			<BeginStoryboard Storyboard="{StaticResource phoneBoard2}" x:Name="phoneBoard2_BeginStoryboard"/>
 			<BeginStoryboard Storyboard="{StaticResource windowLoad}" x:Name="windowLoad_BeginStoryboard"/>
+			<BeginStoryboard Storyboard="{StaticResource gamesBoard}" x:Name="gamesBoard_BeginStoryboard"/>
+			<BeginStoryboard Storyboard="{StaticResource gamesBoard2}" x:Name="gamesBoard2_BeginStoryboard"/>
 		</EventTrigger>
 		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="music">
 			<BeginStoryboard Storyboard="{StaticResource musicBoard}" x:Name="musicBoard_BeginStoryboard1"/>
@@ -588,6 +610,12 @@
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard Storyboard="{StaticResource windowLoad}" x:Name="windowLoad_BeginStoryboard1"/>
 		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="Juegos">
+			<BeginStoryboard Storyboard="{StaticResource gamesBoard}" x:Name="gamesBoard_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="Juegos">
+			<BeginStoryboard Storyboard="{StaticResource gamesBoard2}" x:Name="gamesBoard2_BeginStoryboard1"/>
+		</EventTrigger>
 	</Window.Triggers>
 
 	<Grid x:Name="LayoutRoot">
@@ -617,5 +645,6 @@
 		<Image Opacity="0" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,80,150,0" VerticalAlignment="Center" Width="300" Height="174" Source="Utils\RSS.png" Stretch="Fill" x:Name="imageRSS" Visibility="Collapsed"/>
 		<Image HorizontalAlignment="Right" VerticalAlignment="Center" Width="256" Height="256" Source="Utils\Credits.png" Stretch="Fill" Margin="0,65,180,0" Opacity="0" x:Name="imageCredits" Visibility="Collapsed"/>
 		<Image HorizontalAlignment="Right" VerticalAlignment="Center" Width="256" Height="256" Source="Utils\Phone.png" Stretch="Fill" x:Name="imagePhone" Opacity="0" Visibility="Collapsed" Margin="0,65,180,0"/>
+		<Image HorizontalAlignment="Right" VerticalAlignment="Center" Width="256" Height="256" Source="Utils\Pacman.png" Stretch="Fill" x:Name="imagePac" Margin="0,65,180,0" Opacity="0" Visibility="Collapsed"/>
 	</Grid>
 </Window>

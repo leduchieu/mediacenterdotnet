@@ -4,13 +4,20 @@
 	x:Class="ProjectDOTNET.WindowBrowser"
 	x:Name="Window"
 	Title="WindowBrowser"
-	Width="1280" Height="1024" WindowStyle="None" Background="#FF000000">
+	Width="1280" Height="1024" WindowStyle="None" Background="#FF000000" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<Window.Resources>
 		<Storyboard x:Key="windowLoad">
-			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="{x:Null}">
-				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Uni_fondo" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
 			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Uni_fondo" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:04" Value="{x:Static Visibility.Collapsed}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="browser" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:02.5000000" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
 		</Storyboard>
 	</Window.Resources>
 	<Window.Triggers>
@@ -20,7 +27,8 @@
 	</Window.Triggers>
 
 	<Grid x:Name="LayoutRoot">
-		<WebBrowser HorizontalAlignment="Stretch" Margin="0,80,0,0" x:Name="browser" VerticalAlignment="Stretch" Width="Auto" Height="Auto" OpacityMask="#FF000000"/>
+		<WebBrowser HorizontalAlignment="Stretch" Margin="0,80,0,0" x:Name="browser" VerticalAlignment="Stretch" Width="Auto" Height="Auto" OpacityMask="#FF000000" Visibility="Hidden"/>
+		<Image HorizontalAlignment="Center" Margin="0,0,0,0" x:Name="Uni_fondo" VerticalAlignment="Center" Width="760" Height="145" Source="Utils\uni_fondo.jpg" Stretch="Fill"/>
 		<Image Opacity="0.695" HorizontalAlignment="Right" Margin="0,15,15,0" x:Name="closeImg" VerticalAlignment="Top" Width="48" Height="48" Source="Utils\cancel.png" Stretch="Fill" MouseEnter="Image_MouseEnter" MouseLeave="closeImg_MouseLeave" MouseLeftButtonUp="closeImg_MouseLeftButtonUp"/>
 	</Grid>
 </Window>

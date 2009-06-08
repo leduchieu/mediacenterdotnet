@@ -77,3 +77,11 @@ F:\Ing.Informatica\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\ProjectD
 F:\Ing.Informatica\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\ProjectDOTNET.application
 F:\Ing.Informatica\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.exe.config
 F:\Ing.Informatica\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.XML
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.exe.config
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.exe.manifest
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.application
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\ProjectDOTNET.exe.manifest
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\ProjectDOTNET.application
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\bin\Debug\ProjectDOTNET.XML
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\Window2.baml
+C:\Programacion\Seminario .NET\ProjectDOTNET\ProjectDOTNET\obj\Debug\Window2.g.cs
