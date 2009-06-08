@@ -29,6 +29,27 @@ namespace ProjectDOTNET
 			this.InitializeComponent();
 			
 			// Insert code required on object creation below this point.
+            try {
+
+               Console.WriteLine("Starting...");
+
+               FTPFactory ff = new FTPFactory();
+               ff.setDebug(true);
+               ff.setRemoteHost("192.168.145.86");
+               ff.setRemoteUser("prueba");
+               ff.setRemotePass("prueba");
+               ff.login();
+               ff.chdir("video");
+
+               string[] fileNames = ff.getFileList("*.*");
+               for(int i=0;i < fileNames.Length;i++) {
+                 Console.WriteLine(fileNames[i]);
+               }
+               ff.close();
+
+             }catch(Exception e) {
+               Console.WriteLine("Caught Error :"+e.Message);
+             }
 		}
 
         /// <summary>Metodo al iniciar la ventana principal
