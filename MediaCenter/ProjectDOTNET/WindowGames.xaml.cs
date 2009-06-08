@@ -31,7 +31,7 @@ namespace ProjectDOTNET
 
         private void closeImg_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Window1 w1 = new Window1();
+            Window2 w1 = new Window2();
             w1.WindowState = WindowState.Maximized;
             w1.Show();
             this.Close();
