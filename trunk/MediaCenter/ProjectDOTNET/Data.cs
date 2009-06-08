@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace ProjectDOTNET
 {
@@ -244,11 +245,11 @@ namespace ProjectDOTNET
     /// <summary>Esta clase es una coleccion de objetos Telefono (base de datos)
     /// <param name="dataDc">Sirve para indicar el DataContext</param>
     /// </summary>
-    public class ObservableTelefono : ObservableCollection<Telefono>
+    public class ObservableTelefono : ObservableCollection<Telephones>
     {
-        public ObservableTelefono(TelefonosDataContext dataDc)
+        public ObservableTelefono( List <Telephones> dataDc)
         {
-            foreach (Telefono thisTel in dataDc.Telefonos)
+            foreach (Telephones thisTel in dataDc)
             {
                 this.Add(thisTel);
             }
