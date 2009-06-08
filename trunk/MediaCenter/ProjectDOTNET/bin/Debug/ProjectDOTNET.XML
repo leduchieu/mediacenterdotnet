@@ -24,6 +24,11 @@
             Lista para cargar las fotografias
             </summary>
         </member>
+        <member name="F:ProjectDOTNET.WindowScreenSaver.Songs">
+            <sumary>
+            Lista para cargar la música
+             </sumary>
+        </member>
         <member name="F:ProjectDOTNET.WindowScreenSaver.currentPic">
             <summary>
             Fotografía mostrada en un momento concreto
@@ -313,6 +318,11 @@
         <member name="F:ProjectDOTNET.Window2.selected">
             <summary>
             Variable para saber qué esta cargado
+            </summary>
+        </member>
+        <member name="F:ProjectDOTNET.Window2.sonido">
+            <summary>
+            Variable para saber sonido
             </summary>
         </member>
         <member name="M:ProjectDOTNET.Window2.#ctor">

@@ -179,6 +179,7 @@
     <BlendEmbeddedFont Include="Fonts\PERTILI.TTF">
       <IsSystemFont>True</IsSystemFont>
     </BlendEmbeddedFont>
+    <Resource Include="Utils\audio-volume-muted.png" />
     <Resource Include="Utils\Az.png" />
     <Resource Include="Utils\Back.png" />
     <Resource Include="Utils\cancel.png" />
@@ -202,6 +203,7 @@
     <Resource Include="Utils\settings.png" />
     <Resource Include="Utils\Shinju.JPG" />
     <Resource Include="Utils\Start.png" />
+    <Resource Include="Utils\stock_volume-max.png" />
     <Resource Include="Utils\Stop.png" />
     <Resource Include="Utils\uni_fondo.jpg" />
     <Resource Include="Utils\up.png" />

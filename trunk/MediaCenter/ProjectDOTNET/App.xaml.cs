@@ -22,9 +22,9 @@ namespace ProjectDOTNET
         void MediaCenter_Startup(object sender, StartupEventArgs e)
         {
             //Window1 window = new Window1();
-            //Window2 window = new Window2();
-            Login window = new Login();
-            //window.WindowState = WindowState.Maximized;
+            Window2 window = new Window2();
+            //Login window = new Login();
+            window.WindowState = WindowState.Maximized;
             window.Show();
         }
     }
