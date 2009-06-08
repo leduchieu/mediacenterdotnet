@@ -15,6 +15,9 @@ namespace ProjectDOTNET
         /// <summary>Variable para el reloj
         /// </summary>
         public System.Windows.Threading.DispatcherTimer myDispatcherTimer;
+        private int horas;
+        private int minutos;
+        private int segundos;
 
         /// <summary>
         /// Variable para saber qué esta cargado
@@ -58,6 +61,9 @@ namespace ProjectDOTNET
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DateTime dt = DateTime.Now;
+            this.segundos = dt.Second;
+            this.minutos = dt.Minute;
+            this.horas = dt.Hour;
             String seconds;
             if (dt.Second < 10)
                 seconds = "0" + dt.Second;
@@ -88,19 +94,35 @@ namespace ProjectDOTNET
         /// </summary>
         private void changeTime(object o, EventArgs sender)
         {
-            DateTime dt = DateTime.Now;
+            if (segundos == 59)
+            {
+                segundos = 0;
+                if (minutos == 59)
+                {
+                    minutos = 0;
+                    if (horas == 23)
+                        horas = 0;
+                    else
+                        horas++;
+                }
+                else
+                    minutos++;
+            }
+            else
+                segundos++;
+
             String seconds;
-            if (dt.Second < 10)
-                seconds = "0" + dt.Second;
-            else seconds = ""+dt.Second;
+            if (segundos < 10)
+                seconds = "0" + segundos;
+            else seconds = "" + segundos;
             String minutes;
-            if (dt.Minute < 10)
-                minutes = "0" + dt.Minute;
-            else minutes = "" + dt.Minute;
+            if (minutos < 10)
+                minutes = "0" + minutos;
+            else minutes = "" + minutos;
             String hours;
-            if (dt.Hour < 10)
-                hours = "0" + dt.Hour;
-            else hours = "" + dt.Hour;
+            if (horas < 10)
+                hours = "0" + horas;
+            else hours = "" + horas;
             this.textTime.Text = hours+":"+minutes+":"+seconds;
         }
 
