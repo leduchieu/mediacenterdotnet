@@ -769,8 +769,8 @@ namespace ProjectDOTNET
 
    }
 }
-/* USAGE
- public static void Main() {
+// USAGE
+ /*public static void Main() {
 
      try {
 
@@ -797,4 +797,4 @@ namespace ProjectDOTNET
        Console.WriteLine("Caught Error :"+e.Message);
      }
    }
- */
+*/
