@@ -29,7 +29,7 @@ namespace ProjectDOTNET
 			this.InitializeComponent();
 			
 			// Insert code required on object creation below this point.
-            try {
+            /*try {
 
                Console.WriteLine("Starting...");
 
@@ -49,7 +49,7 @@ namespace ProjectDOTNET
 
              }catch(Exception e) {
                Console.WriteLine("Caught Error :"+e.Message);
-             }
+             }*/
 		}
 
         /// <summary>Metodo al iniciar la ventana principal
