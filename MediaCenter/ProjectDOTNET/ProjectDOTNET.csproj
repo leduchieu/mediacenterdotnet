@@ -43,10 +43,7 @@
       <HintPath>bin\Debug\3DTools-1.01-bin\3DTools.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.1.0.0, Culture=neutral, PublicKeyToken=96eee45103d523d1">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Archivos de programa\NITGEN eNBSP\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
-    </Reference>
+    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.1.0.0, Culture=neutral, PublicKeyToken=96eee45103d523d1" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -60,10 +57,7 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\sqlite\bin\System.Data.SQLite.DLL</HintPath>
-    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <ApplicationDefinition Include="App.xaml">
