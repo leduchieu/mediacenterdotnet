@@ -45,7 +45,7 @@
     </Reference>
     <Reference Include="NITGEN.SDK.NBioBSP, Version=1.1.0.0, Culture=neutral, PublicKeyToken=96eee45103d523d1">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\HUELLAS\HUELLAS\bin\Debug\NITGEN.SDK.NBioBSP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Archivos de programa\NITGEN eNBSP\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -62,7 +62,11 @@
     </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\HUELLAS\HUELLAS\bin\Debug\System.Data.SQLite.DLL</HintPath>
+      <HintPath>..\..\..\..\sqlite\bin\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=2.0.38.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\sqlite\bin\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
@@ -74,9 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="WindowPhone2.xaml.cs">
-      <DependentUpon>WindowPhone2.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Telephones.cs" />
     <Compile Include="DBFactory.cs" />
     <Compile Include="EnrollFail.cs" />
     <Compile Include="IDB.cs" />
@@ -126,10 +128,6 @@
     <Compile Include="WindowPhone.xaml.cs">
       <DependentUpon>WindowPhone.xaml</DependentUpon>
     </Compile>
-    <Page Include="WindowPhone2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Window2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
