@@ -25,6 +25,14 @@ namespace ProjectDOTNET
             return Path;
         }
 
+        public string FileName()
+        {
+            string[] substrings;
+            char[] splitter = { '\\' };
+            substrings = Path.Split(splitter);
+            return substrings[substrings.Length - 1];
+        }
+
         private String _path;
         public String Path { get { return _path; } }
         private Uri _uri;

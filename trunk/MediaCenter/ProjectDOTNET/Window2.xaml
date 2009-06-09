@@ -6,7 +6,7 @@
 	x:Class="ProjectDOTNET.Window2"
 	x:Name="Window"
 	Title="Start"
-	Width="1280" Height="1024" Cursor="Hand" WindowStyle="None" HorizontalAlignment="Stretch" Loaded="Window_Loaded" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET" Activated="ResumeTimer" MouseMove="noInactive">
+	Width="1280" Height="1024" Cursor="Hand" WindowStyle="None" HorizontalAlignment="Stretch" Loaded="Window_Loaded" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET" Activated="ResumeTimer" MouseMove="noInactive" MouseLeftButtonDown="noInactive">
 	<Window.Resources>
 		<Storyboard x:Key="closeEnter">
 			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="close" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -1349,6 +1349,30 @@
 				<SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+		<Storyboard x:Key="configEnter">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="stackPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.595"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.895"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF48D478"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#FF48D478"/>
+			</ColorAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="imageDown" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+				<SplineThicknessKeyFrame KeyTime="00:00:00.3000000" Value="225,400,0,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="imageUp" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+				<SplineThicknessKeyFrame KeyTime="00:00:00.3000000" Value="225,0,0,400"/>
+			</ThicknessAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="configLeave">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="stackPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.895"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 	</Window.Resources>
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="close">
@@ -1359,6 +1383,8 @@
 		</EventTrigger>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard Storyboard="{StaticResource windowLoad}" x:Name="windowLoad_BeginStoryboard"/>
+			<BeginStoryboard Storyboard="{StaticResource configEnter}" x:Name="configEnter_BeginStoryboard"/>
+			<BeginStoryboard Storyboard="{StaticResource configLeave}" x:Name="configLeave_BeginStoryboard"/>
 		</EventTrigger>
 		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="imageUp">
 			<BeginStoryboard Storyboard="{StaticResource upEnter}" x:Name="upEnter_BeginStoryboard1"/>
@@ -1371,6 +1397,12 @@
 		</EventTrigger>
 		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="imageDown">
 			<BeginStoryboard Storyboard="{StaticResource downLeave}" x:Name="downLeave_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="stackPanel">
+			<BeginStoryboard Storyboard="{StaticResource configEnter}" x:Name="configEnter_BeginStoryboard1"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="stackPanel">
+			<BeginStoryboard Storyboard="{StaticResource configLeave}" x:Name="configLeave_BeginStoryboard1"/>
 		</EventTrigger>
 	</Window.Triggers>
 
@@ -1396,5 +1428,16 @@
 		<Image HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="120" Source="Utils\down.png" Stretch="Fill" Margin="225,500,0,0" x:Name="imageDown" Opacity="0.6" MouseLeftButtonUp="actionDown"/>
 		<TextBlock Margin="250,0,0,0" TextWrapping="Wrap" x:Name="textoSelec" FontSize="48" Height="58" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" FontFamily="Minya Nouvelle" Foreground="#FFFFFFFF" Opacity="0.75" Text="IMÁGENES" MouseLeftButtonUp="text_Click"/>
 		<Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="150" Source="Utils\stock_volume-max.png" Stretch="Fill" Margin="0,0,30,30" Opacity="0.695" x:Name="imgVol" MouseLeftButtonUp="changeVol"/>
+		<StackPanel Margin="0,0,0,30" VerticalAlignment="Bottom" Height="Auto" Orientation="Horizontal" HorizontalAlignment="Center" Opacity="0.595" x:Name="stackPanel" MouseLeftButtonUp="configClick">
+			<Image Width="50" Height="50" Source="Utils\settings.png" Stretch="Fill"/>
+			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" x:Name="textBlock">
+				<TextBlock.Foreground>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FF000000" Offset="0"/>
+						<GradientStop Color="#FFFFFFFF" Offset="1"/>
+						<GradientStop Color="#FF868686" Offset="0.527"/>
+					</LinearGradientBrush>
+				</TextBlock.Foreground><Run Text="Configuración" Language="es-es"/></TextBlock>
+		</StackPanel>
 	</Grid>
 </Window>
