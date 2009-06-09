@@ -1,0 +1,13 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="ProjectDOTNET.LoginSettings"
+	x:Name="Window"
+	Title="LoginSettings"
+	Width="800" Height="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+	<Grid x:Name="LayoutRoot">
+		<TextBlock Margin="0,30,0,0" VerticalAlignment="Top" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="36"><Run Text="USUARIOS DEL SISTEMA" Language="es-es"/></TextBlock>
+		<ListBox IsSynchronizedWithCurrentItem="True" Margin="20,80,150,20" VerticalAlignment="Stretch" x:Name="listaUsers"/>
+	</Grid>
+</Window>

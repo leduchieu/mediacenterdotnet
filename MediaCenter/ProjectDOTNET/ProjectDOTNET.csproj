@@ -35,7 +35,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DocumentationFile>bin\Debug\ProjectDOTNET.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -68,6 +69,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="LoginSettings.xaml.cs">
+      <DependentUpon>LoginSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowScreenSaver.xaml.cs">
       <DependentUpon>WindowScreenSaver.xaml</DependentUpon>
     </Compile>
@@ -109,6 +113,9 @@
     <Compile Include="WindowRSS.xaml.cs">
       <DependentUpon>WindowRSS.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowSettings.xaml.cs">
+      <DependentUpon>WindowSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowVideo.xaml.cs">
       <DependentUpon>WindowVideo.xaml</DependentUpon>
     </Compile>
@@ -125,6 +132,10 @@
     <Compile Include="WindowPhone.xaml.cs">
       <DependentUpon>WindowPhone.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="WindowScreenSaver.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,6 +161,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="WindowRSS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -190,6 +205,7 @@
     <Resource Include="Utils\GamesWall.jpg" />
     <Resource Include="Utils\Images.png" />
     <Resource Include="Utils\login.jpg" />
+    <Resource Include="Utils\Login.png" />
     <Resource Include="Utils\meneame.png" />
     <Resource Include="Utils\Music.png" />
     <Resource Include="Utils\MV.png" />
@@ -201,6 +217,7 @@
     <Resource Include="Utils\Play.png" />
     <Resource Include="Utils\RSS.png" />
     <Resource Include="Utils\settings.png" />
+    <Resource Include="Utils\settingsback.jpg" />
     <Resource Include="Utils\Shinju.JPG" />
     <Resource Include="Utils\Start.png" />
     <Resource Include="Utils\stock_volume-max.png" />

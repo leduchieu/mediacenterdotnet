@@ -34,7 +34,8 @@ namespace ProjectDOTNET
 
         private void settingsClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            LoginSettings ls = new LoginSettings();
+            ls.Show();
         }
 
         private void detectarHuella(object sender, RoutedEventArgs e)
