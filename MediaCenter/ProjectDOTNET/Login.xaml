@@ -4,7 +4,7 @@
 	x:Class="ProjectDOTNET.Login"
 	x:Name="Window"
 	Title="Login"
-	Width="800" Height="400" WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+	Width="800" Height="400" WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="Utils\lock.png" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
 		<Storyboard x:Key="closeEnter">
 			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="closeImg" Storyboard.TargetProperty="(UIElement.Opacity)">

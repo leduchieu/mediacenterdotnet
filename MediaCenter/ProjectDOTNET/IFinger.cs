@@ -14,6 +14,8 @@ namespace HUELLAS
         void initDevice(string options);
         void stopDevice();
         void setOptions(string options);
+        List<String> getUsers();
+        void removeUser(String user);
         string getOptions();
     }
 }

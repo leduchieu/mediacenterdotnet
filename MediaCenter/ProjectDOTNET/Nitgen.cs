@@ -11,7 +11,7 @@ namespace HUELLAS
         NBioAPI m_NBioAPI;
 
         short m_OpenedDeviceID;
-        NBioAPI.Type.HFIR m_hNewFIR;
+        //NBioAPI.Type.HFIR m_hNewFIR;
 
         NBioAPI.Type.FIR m_biFIR;
         NBioAPI.Type.FIR_TEXTENCODE m_textFIR;
@@ -27,6 +27,7 @@ namespace HUELLAS
         {
             uint ret;
             bool result = false;
+            NBioAPI.Type.HFIR m_hNewFIR = new NBioAPI.Type.HFIR();
             List<String> listFingerprint = db.getUsersFingerPrint();
             foreach (String fingerprint in listFingerprint)
             {
@@ -43,6 +44,7 @@ namespace HUELLAS
 
         public void enrollUser(string user)
         {
+            NBioAPI.Type.HFIR m_hNewFIR = new NBioAPI.Type.HFIR();
             NBioAPI.Type.FIR_PAYLOAD myPayload = new NBioAPI.Type.FIR_PAYLOAD();
             //myPayload.Data = textPayload.Text;
 
@@ -58,6 +60,8 @@ namespace HUELLAS
                 // Get text encoded FIR data
                 m_NBioAPI.GetTextFIRFromHandle(m_hNewFIR, out m_textFIR, true);
                 db.insertUser(user, m_textFIR.TextFIR);
+                
+
             }
             else
             {
@@ -115,7 +119,7 @@ namespace HUELLAS
 
             // Close Device if before opened
             m_NBioAPI.CloseDevice(m_OpenedDeviceID);
-
+            
         
             // Open device
             uint ret = m_NBioAPI.OpenDevice(iDeviceID);
@@ -144,7 +148,14 @@ namespace HUELLAS
         {
             throw new NotImplementedException();
         }
-
+        public List<String> getUsers()
+        {
+            return db.getUsers();
+        }
+        public void removeUser(String user)
+    {
+        db.deleteUser(user);
+    }
         #endregion
     }
 }

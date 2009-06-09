@@ -13,38 +13,13 @@ namespace ProjectDOTNET
 {
 	public partial class WindowSettings
 	{
-        private string texto = "";
         FTPFactory ff = null;
-        private System.Windows.Threading.DispatcherTimer myDispatcherTimer2;
 
         public WindowSettings()
 		{
 			this.InitializeComponent();
 			
 			// Insert code required on object creation below this point.
-            texto = "Ninguna tarea pendiente";
-            StartTimer();
-		}
-
-        /// <summary>
-        /// Dispatcher para cambiar las imagenes cada 5 segundos
-        /// </summary>
-        private void StartTimer()
-        {
-            myDispatcherTimer2 = new System.Windows.Threading.DispatcherTimer();
-            myDispatcherTimer2.Interval = new TimeSpan(0, 0, 0, 5, 0); // 5 seconds
-            myDispatcherTimer2.Tick += new EventHandler(changeText);
-            myDispatcherTimer2.Start();
-        }
-
-        /// <summary>
-        /// Cambia el texto
-        /// </summary>
-        /// <param name="o"></param>
-        /// <param name="sender"></param>
-        private void changeText(object o, EventArgs sender)
-        {
-            this.textoInfo.Text = this.texto;
         }
 
         private void Image_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -69,7 +44,7 @@ namespace ProjectDOTNET
         {
             ff = new FTPFactory();
             ff.setDebug(true);
-            ff.setRemoteHost("216.148.223.66");
+            ff.setRemoteHost("192.168.145.86");
             ff.setRemoteUser(user);
             ff.setRemotePass(password);
             ff.login();
@@ -77,99 +52,103 @@ namespace ProjectDOTNET
 
         private void newImages(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            /*try {
-               this.conectarFtp("anonymous","");
+            textoInfo.Text = "Conectado al FTP";
+            try {
+               this.conectarFtp("prueba","prueba");
                ff.chdir("images");
                bool encontrado = false;
+               textoInfo.Text = "Obteniendo lista de imagenes";
                string[] fileNames = ff.getFileList("*.*");
                List<String> downloads = new List<String>();
-               for(int i=0;i < fileNames.Length;i++) {
-                   PhotoList Photos = new PhotoList(".\\Images");
+               PhotoList Photos = new PhotoList(".\\Images");
+               string fn = "";
+               for(int i=0;i < fileNames.Length-1;i++) {
                    foreach (ImageFile f in Photos)
                    {
-                       if (f.FileName().Equals(fileNames[i]))
+                       fn = fileNames[i];
+                       if (fn.EndsWith("\r"))
+                           fn = fn.Remove(fn.Length - 1);
+                       if (f.FileName().Equals(fn))
                        {
                            encontrado = true;
                            break;
                        }
                    }
                    if (encontrado)
-                   {
                        encontrado = false;
-                       downloads.Add(fileNames[i]);
-                   }
+                   else
+                       downloads.Add(fn);
                }
-               int imagenesDescargar = downloads.Count + 1;
-               int imagenDescargando = 1;
-               Environment.CurrentDirectory = ".\\Images";
-               foreach (string s in downloads)
+               if (downloads.Count > 0)
                {
-                   texto = "Descargando imagen "+ imagenDescargando +" de "+ imagenesDescargar;
-                   ff.download(s, false);
+                   int imagenesDescargar = downloads.Count;
+                   int imagenDescargando = 1;
+                   Environment.CurrentDirectory = ".\\Images";
+                   foreach (string s in downloads)
+                   {
+                       textoInfo.Text = "Descargando imagen " + imagenDescargando + " de " + imagenesDescargar;
+                       ff.download(s);
+                   }
+                   Environment.CurrentDirectory = ".."; 
                }
-               Environment.CurrentDirectory = "..";
-               texto = "Ninguna tarea pendiente";
+               textoInfo.Text = "Tarea terminada correctamente";
                ff.close();
              } catch(Exception exc) {
-               Console.WriteLine("Caught Error :"+exc.Message);
-             }*/
-            try
-            {
-                this.conectarFtp("anonymous", "");
-                ff.chdir("pub\\WoW\\wallpapers");
-                string[] fileNames = ff.getFileList("*.*");
-                foreach (string s in fileNames)
-                    Console.WriteLine(s);
-                ff.download("alliance-1024x.zip");
-                ff.close();
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine("Caught Error :" + exc.Message);
-            }
+                    Console.WriteLine("Caught Error :"+exc.Message);
+                    textoInfo.Text = "Error de conexion FTP";
+             }
         }
 
         private void newSongs(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
             {
-                this.conectarFtp("anonymous", "");
+                textoInfo.Text = "Conectado al FTP";
+                this.conectarFtp("prueba", "prueba");
                 ff.chdir("music");
                 bool encontrado = false;
+                textoInfo.Text = "Obteniendo lista de canciones";
                 string[] fileNames = ff.getFileList("*.*");
                 List<String> downloads = new List<String>();
-                for (int i = 0; i < fileNames.Length; i++)
+                PhotoList Photos = new PhotoList(".\\Music");
+                string fn = "";
+                for (int i = 0; i < fileNames.Length - 1; i++)
                 {
-                    MusicList songs = new MusicList(".\\Music");
-                    foreach (MusicFile f in songs)
+                    foreach (ImageFile f in Photos)
                     {
-                        if (songs.ToString().Equals(fileNames[i]))
+                        fn = fileNames[i];
+                        if (fn.EndsWith("\r"))
+                            fn = fn.Remove(fn.Length - 1);
+                        if (f.ToString().Equals(fn))
                         {
                             encontrado = true;
                             break;
                         }
                     }
                     if (encontrado)
-                    {
                         encontrado = false;
-                        downloads.Add(fileNames[i]);
-                    }
+                    else
+                        downloads.Add(fn);
                 }
-                int imagenesDescargar = downloads.Count + 1;
-                int imagenDescargando = 1;
-                Environment.CurrentDirectory = ".\\Music";
-                foreach (string s in downloads)
+                if (downloads.Count > 0)
                 {
-                    texto = "Descargando cancion " + imagenDescargando + " de " + imagenesDescargar;
-                    ff.download(s, false);
+                    int imagenesDescargar = downloads.Count;
+                    int imagenDescargando = 1;
+                    Environment.CurrentDirectory = ".\\Music";
+                    foreach (string s in downloads)
+                    {
+                        textoInfo.Text = "Descargando cancion " + imagenDescargando + " de " + imagenesDescargar;
+                        ff.download(s);
+                    }
+                    Environment.CurrentDirectory = "..";
+                    textoInfo.Text = "Ninguna tarea pendiente";
                 }
-                Environment.CurrentDirectory = "..";
-                texto = "Ninguna tarea pendiente";
                 ff.close();
             }
             catch (Exception exc)
             {
                 Console.WriteLine("Caught Error :" + exc.Message);
+                textoInfo.Text = "Error de conexion FTP";
             }
         }
 
@@ -177,43 +156,52 @@ namespace ProjectDOTNET
         {
             try
             {
-                this.conectarFtp("anonymous", "");
+                textoInfo.Text = "Conectado al FTP";
+                this.conectarFtp("prueba", "prueba");
                 ff.chdir("videos");
                 bool encontrado = false;
+                textoInfo.Text = "Obteniendo lista de videos";
                 string[] fileNames = ff.getFileList("*.*");
                 List<String> downloads = new List<String>();
-                for (int i = 0; i < fileNames.Length; i++)
+                VideoList Videos = new VideoList(".\\Images");
+                string fn = "";
+                for (int i = 0; i < fileNames.Length - 1; i++)
                 {
-                    VideoList videos = new VideoList(".\\Videos");
-                    foreach (VideoFile f in videos)
+                    foreach (VideoFile f in Videos)
                     {
-                        if (f.ToString().Equals(fileNames[i]))
+                        fn = fileNames[i];
+                        if (fn.EndsWith("\r"))
+                            fn = fn.Remove(fn.Length - 1);
+                        if (f.ToString().Equals(fn))
                         {
                             encontrado = true;
                             break;
                         }
                     }
                     if (encontrado)
-                    {
                         encontrado = false;
-                        downloads.Add(fileNames[i]);
-                    }
+                    else
+                        downloads.Add(fn);
                 }
-                int imagenesDescargar = downloads.Count + 1;
-                int imagenDescargando = 1;
-                Environment.CurrentDirectory = ".\\Videos";
-                foreach (string s in downloads)
+                if (downloads.Count > 0)
                 {
-                    texto = "Descargando video " + imagenDescargando + " de " + imagenesDescargar;
-                    ff.download(s, false);
+                    int imagenesDescargar = downloads.Count;
+                    int imagenDescargando = 1;
+                    Environment.CurrentDirectory = ".\\Videos";
+                    foreach (string s in downloads)
+                    {
+                        textoInfo.Text = "Descargando video " + imagenDescargando + " de " + imagenesDescargar;
+                        ff.download(s);
+                    }
+                    Environment.CurrentDirectory = "..";
+                    textoInfo.Text = "Ninguna tarea pendiente";
                 }
-                Environment.CurrentDirectory = "..";
-                texto = "Ninguna tarea pendiente";
                 ff.close();
             }
             catch (Exception exc)
             {
                 Console.WriteLine("Caught Error :" + exc.Message);
+                textoInfo.Text = "Error de conexion FTP";
             }
         }
 	}

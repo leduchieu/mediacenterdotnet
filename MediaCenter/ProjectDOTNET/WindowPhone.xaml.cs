@@ -151,7 +151,7 @@ namespace ProjectDOTNET
             }
             catch (Exception ex)
             {
-                // Tratamiento aqui
+                Console.WriteLine(ex.Message);
             }            
         }
 
