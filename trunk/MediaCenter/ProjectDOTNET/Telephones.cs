@@ -86,6 +86,7 @@ namespace ProjectDOTNET
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -116,6 +117,7 @@ namespace ProjectDOTNET
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {

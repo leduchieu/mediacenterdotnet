@@ -4,10 +4,61 @@
 	x:Class="ProjectDOTNET.LoginSettings"
 	x:Name="Window"
 	Title="LoginSettings"
-	Width="800" Height="600" HorizontalAlignment="Center" VerticalAlignment="Center">
+	Width="800" Height="600" HorizontalAlignment="Center" VerticalAlignment="Center" Closing="Window_Closing" Icon="Utils\users.png" WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+		<Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="Background" Value="#00FFFFFF"/>
+			<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="2,0,0,0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+							<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="Foreground" Value="#FF000000"/>
+								<Setter Property="Background" Value="#FF3A5BD5"/>
+								<Setter Property="Background" TargetName="Bd" Value="#CC1264F5"/>
+								<Setter Property="Opacity" TargetName="Bd" Value="1"/>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="True"/>
+									<Condition Property="Selector.IsSelectionActive" Value="False"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
 
 	<Grid x:Name="LayoutRoot">
-		<TextBlock Margin="0,30,0,0" VerticalAlignment="Top" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="36"><Run Text="USUARIOS DEL SISTEMA" Language="es-es"/></TextBlock>
-		<ListBox IsSynchronizedWithCurrentItem="True" Margin="20,80,150,20" VerticalAlignment="Stretch" x:Name="listaUsers"/>
+		<Image Margin="0,0,0,0" Source="Utils\loginsettingsback.jpg" Stretch="Fill" Opacity="0.755"/>
+		<TextBlock Margin="0,20,0,0" VerticalAlignment="Top" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="36" Opacity="0.845" FontWeight="ExtraBold" Background="{x:Null}">
+			<TextBlock.Foreground>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FF7D7A3B" Offset="0"/>
+					<GradientStop Color="#FF7D7A3B" Offset="0.991"/>
+					<GradientStop Color="#FFAFAB54" Offset="0.509"/>
+				</LinearGradientBrush>
+			</TextBlock.Foreground><Run Text="USUARIOS DEL SISTEMA" Language="es-es"/></TextBlock>
+		<ListBox IsSynchronizedWithCurrentItem="True" Margin="20,80,150,20" VerticalAlignment="Stretch" x:Name="listaUsers" Opacity="0.84" Background="#FF8DA1ED" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
+			<ListBoxItem Content="ListBoxItem"/>
+		</ListBox>
+		<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto" Height="Auto" Margin="0,0,30,0">
+			<TextBox Width="Auto" Height="Auto" Text="" TextWrapping="Wrap" BorderThickness="2,2,2,0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" x:Name="tbUsers" Background="#FF8DA1ED" Opacity="0.85"/>
+			<Image Margin="0,20,0,30" Width="80" Height="80" MouseLeftButtonUp="addClick" Source="Utils\list-add.png" Stretch="Fill"/>
+			<Image Margin="0,0,0,30" Width="80" Height="80" MouseLeftButtonUp="removeClick" Source="Utils\list-remove.png" Stretch="Fill"/>
+		</StackPanel>
 	</Grid>
 </Window>

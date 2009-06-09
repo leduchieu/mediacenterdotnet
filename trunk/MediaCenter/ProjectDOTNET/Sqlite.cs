@@ -39,6 +39,7 @@ namespace HUELLAS
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -60,17 +61,17 @@ namespace HUELLAS
         {
             try 
             {
-            openConnection();
-            SQLiteCommand mycommand = new SQLiteCommand(_connection);
-            mycommand.CommandText = "insert into users (name, fingerprint) values (" +
-      "@Name, @Fingerprint)";
-            mycommand.Parameters.AddWithValue("@Name", name);
-            mycommand.Parameters.AddWithValue("@Fingerprint", fingerprint);
-            mycommand.ExecuteNonQuery();
-          
+                openConnection();
+                SQLiteCommand mycommand = new SQLiteCommand(_connection);
+                mycommand.CommandText = "insert into users (name, fingerprint) values (" +
+          "@Name, @Fingerprint)";
+                mycommand.Parameters.AddWithValue("@Name", name);
+                mycommand.Parameters.AddWithValue("@Fingerprint", fingerprint);
+                mycommand.ExecuteNonQuery();
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -90,6 +91,7 @@ namespace HUELLAS
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -112,6 +114,7 @@ namespace HUELLAS
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {                
@@ -119,7 +122,35 @@ namespace HUELLAS
                
             }
             return result;
+            
         }
+        public List<String> getUsers()
+        {
+            List<String> result = new List<string>();
+            try
+            {
+                openConnection();
+                SQLiteCommand mycommand = new SQLiteCommand(_connection);
+                mycommand.CommandText = "select name from users";
+                SQLiteDataReader rdr = mycommand.ExecuteReader();
+                while (rdr.Read())
+                    result.Add(rdr["name"].ToString());
+                rdr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                closeConnection();
+
+            }
+            return result;
+
+        }
+
+
         public String getUser(String fingerprint)
         {
             String result =null;
@@ -137,6 +168,7 @@ namespace HUELLAS
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             finally
             {                

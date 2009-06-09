@@ -26,9 +26,6 @@ namespace ProjectDOTNET
 
         private void close(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            /*Window2 w = new Window2();
-            w.WindowState = WindowState.Maximized;
-            w.Show();*/
             this.Close();
         }
 
@@ -40,6 +37,7 @@ namespace ProjectDOTNET
 
         private void detectarHuella(object sender, RoutedEventArgs e)
         {
+            this.fingerprintReader.initDevice("auto_detect");
             String aux = this.fingerprintReader.readFinger();
             if (aux != null)
             {
@@ -49,6 +47,7 @@ namespace ProjectDOTNET
                 w.Show();
                 this.Close();
             }
+            this.fingerprintReader.stopDevice();
         }
 	}
 }

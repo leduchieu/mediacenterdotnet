@@ -14,5 +14,6 @@ namespace HUELLAS
         void deleteUser(String name);
         List<String> getUsersFingerPrint();
         String getUser(String fingerprint);
+        List<String> getUsers();
     }
 }

@@ -4,7 +4,7 @@
 	x:Class="ProjectDOTNET.WindowSettings"
 	x:Name="Window"
 	Title="WindowSettings"
-	Width="1280" Height="1024" WindowStyle="None">
+	Width="1280" Height="1024" WindowStyle="None" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:ProjectDOTNET="clr-namespace:ProjectDOTNET">
 	<Window.Resources>
 		<Storyboard x:Key="OnLoaded1">
 			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -27,14 +27,6 @@
 					</DoubleAnimationUsingKeyFrames>
 				</Storyboard>
 			</Style.Resources>
-			<Style.Triggers>
-				<EventTrigger RoutedEvent="Mouse.MouseLeave">
-					<BeginStoryboard Storyboard="{StaticResource OnMouseExit1}" x:Name="OnMouseExit1_BeginStoryboard"/>
-				</EventTrigger>
-				<EventTrigger RoutedEvent="Mouse.MouseEnter">
-					<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
-				</EventTrigger>
-			</Style.Triggers>
 			<Setter Property="TextWrapping" Value="NoWrap"/>
 			<Setter Property="TextTrimming" Value="None"/>
 			<Setter Property="Foreground">
@@ -49,6 +41,14 @@
 			<Setter Property="Opacity" Value="0.75"/>
 			<Setter Property="Cursor" Value="Hand"/>
 			<Setter Property="FontWeight" Value="Normal"/>
+			<Style.Triggers>
+				<EventTrigger RoutedEvent="Mouse.MouseLeave">
+					<BeginStoryboard Storyboard="{StaticResource OnMouseExit1}" x:Name="OnMouseExit1_BeginStoryboard"/>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Mouse.MouseEnter">
+					<BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+				</EventTrigger>
+			</Style.Triggers>
 		</Style>
 	</Window.Resources>
 	<Window.Triggers>
@@ -60,9 +60,9 @@
 	<Grid x:Name="LayoutRoot">
 		<Image Margin="0,0,0,0" Source="Utils\settingsback.jpg" Stretch="Fill"/>
 		<Image Opacity="0.695" HorizontalAlignment="Right" Margin="0,15,15,0" x:Name="closeImg" VerticalAlignment="Top" Width="48" Height="48" Source="Utils\cancel.png" Stretch="Fill" MouseEnter="Image_MouseEnter" MouseLeave="closeImg_MouseLeave" MouseLeftButtonUp="closeImg_MouseLeftButtonUp"/>
-		<TextBlock HorizontalAlignment="Center" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="Auto" Height="Auto" TextWrapping="Wrap" FontSize="48" Opacity="0.695" FontWeight="Bold" x:Name="textoInfo" Foreground="#FF000000"><Run Text="Ninguna tarea pendiente" Language="es-es"/></TextBlock>
+		<TextBlock HorizontalAlignment="Center" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="Auto" Height="Auto" TextWrapping="Wrap" FontSize="48" Opacity="0.695" FontWeight="Bold" x:Name="textoInfo" Foreground="#FF000000" Text="Ninguna tarea pendiente"/>
 		<StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Margin="0,0,0,30" FontSize="48" Style="{DynamicResource EstiloTexto}" HorizontalAlignment="Center" MouseLeftButtonUp="newImages"><Run Text="Descargar nuevas imágenes" Language="es-es"/></TextBlock>
+			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Margin="0,0,0,30" FontSize="48" Style="{DynamicResource EstiloTexto}" HorizontalAlignment="Center" MouseLeftButtonUp="newImages" x:Name="textBlock"><Run Text="Descargar nuevas imágenes" Language="es-es"/></TextBlock>
 			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Margin="0,0,0,30" FontSize="48" Style="{DynamicResource EstiloTexto}" HorizontalAlignment="Center" MouseLeftButtonUp="newSongs"><Run Text="Descargar nuevas canciones" Language="es-es"/></TextBlock>
 			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" Margin="0,0,0,30" FontSize="48" Style="{DynamicResource EstiloTexto}" HorizontalAlignment="Center" MouseLeftButtonUp="newVideos"><Run Text="Descargar nuevos vídeos" Language="es-es"/></TextBlock>
 		</StackPanel>
