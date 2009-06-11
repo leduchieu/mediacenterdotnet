@@ -18,10 +18,10 @@ namespace ProjectDOTNET
 		public Login()
 		{
 			this.InitializeComponent();
+            // Insert code required on object creation below this point.
             this.fingerprintReader = new Nitgen();
             this.fingerprintReader.setupDB("SQLITE3", "users.db", null, null, null, 0, 0);
             this.fingerprintReader.initDevice("Auto_Detect");
-			// Insert code required on object creation below this point.
 		}
 
         private void close(object sender, System.Windows.Input.MouseButtonEventArgs e)

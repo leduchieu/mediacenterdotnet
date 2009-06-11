@@ -21,11 +21,19 @@ namespace ProjectDOTNET
         /// </summary>
         void MediaCenter_Startup(object sender, StartupEventArgs e)
         {
-            //Window1 window = new Window1();
-            //Window2 window = new Window2();
-            Login window = new Login();
-            //window.WindowState = WindowState.Maximized;
-            window.Show();
+            try
+            {
+                //Window1 window = new Window1();
+                //Window2 window = new Window2();
+                Login window = new Login();
+                //window.WindowState = WindowState.Maximized;
+                window.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Conecte el detector de huellas y vuelva a intentarlo", "Falta dispositivo", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                this.Shutdown();
+            }
         }
     }
 }

@@ -32,10 +32,7 @@ namespace ProjectDOTNET
 			// Insert code required on object creation below this point.
             skype = new SKYPE4COMLib.Skype();
             if (skype.Client.IsRunning == false)
-            {
                 skype.Client.Start(true, true);
-                System.Threading.Thread.Sleep(new TimeSpan(0, 0, 15));
-            }
             skype.Attach(9,true);       
             skype.SilentMode = true;
             llamada = null;
@@ -130,9 +127,21 @@ namespace ProjectDOTNET
                     if (boxNumero.IsReadOnly == true)
                         llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
                     else
-                        llamada = skype.PlaceCall(boxNumero.Text, "", "", "");
+                        llamada = skype.PlaceCall("+34" + boxNumero.Text, "", "", "");
                     boxNumero.IsReadOnly = true;
-                    
+
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (!(llamada.Status == SKYPE4COMLib.TCallStatus.clsInProgress))
+                        llamada = null;
+                }
+                catch (Exception exc)
+                {
+                    llamada = null;
                 }
             }
         }
