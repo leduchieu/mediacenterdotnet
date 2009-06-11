@@ -88,6 +88,6 @@
 				</Slider>
 			</StackPanel>
 		</StackPanel>
-		<GridSplitter Margin="0,8,0,150" Width="2" Grid.Column="1" HorizontalAlignment="Left" Background="#FF000000"/>
+		<GridSplitter Margin="0,8,0,150" Width="8" Grid.Column="1" HorizontalAlignment="Left" Background="#FF000000" Opacity="0.695"/>
 	</Grid>
 </Window>
