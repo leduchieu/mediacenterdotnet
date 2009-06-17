@@ -26,6 +26,10 @@ namespace ProjectDOTNET
         /// </summary>
         private int currentPic;
         /// <summary>
+        /// Transicion mostrada en momento anterior
+        /// </summary>
+        private bool lastTrans;
+        /// <summary>
         /// Dispatcher para pasar de fotos cada 5 segundos
         /// </summary>
         private System.Windows.Threading.DispatcherTimer myDispatcherTimer2;
@@ -42,7 +46,7 @@ namespace ProjectDOTNET
 			this.InitializeComponent();
 			// Insert code required on object creation below this point
             this.Photos = new PhotoList(".\\Images");
-
+            this.lastTrans = true;
 		}
 
 
@@ -89,7 +93,7 @@ namespace ProjectDOTNET
         private void UpdatePicture()
         {
             BitmapSource img = BitmapFrame.Create(new Uri(Photos[currentPic].Path.ToString()));
-            if ((currentPic % 2) == 0)
+            if (!lastTrans)
             {
                 image1.Source = img;
                 Storyboard s;
@@ -103,10 +107,8 @@ namespace ProjectDOTNET
                 s = (Storyboard)this.FindResource("Storyboardimg1");
                 this.BeginStoryboard(s);
             }
-            if (currentPic == (Photos.Count - 1))
-                currentPic = 0;
-            else
-                currentPic = currentPic + 1;
+            lastTrans = !lastTrans;
+            currentPic = (++currentPic) % Photos.Count;
         }
 
         /// <summary>

@@ -22,6 +22,8 @@ namespace ProjectDOTNET
         /// </summary>
         private PhotoList Photos;
 
+        private bool lastTrans;
+
         ///<sumary>
         ///Lista para cargar la música
         /// </sumary>
@@ -62,6 +64,7 @@ namespace ProjectDOTNET
                 this.musica.Source = new Uri(Songs[playingSong].Path, UriKind.Relative);
                 this.musica.Play();
             }
+            lastTrans = true;
         }
 
 
@@ -108,7 +111,7 @@ namespace ProjectDOTNET
         private void UpdatePicture()
         {
             BitmapSource img = BitmapFrame.Create(new Uri(Photos[currentPic].Path.ToString()));
-            if ((currentPic % 2) == 0)
+            if (!lastTrans)
             {
                 image1.Source = img;
                 Storyboard s;
@@ -122,10 +125,8 @@ namespace ProjectDOTNET
                 s = (Storyboard)this.FindResource("Storyboardimg1");
                 this.BeginStoryboard(s);
             }
-            if (currentPic == (Photos.Count - 1))
-                currentPic = 0;
-            else
-                currentPic = currentPic + 1;
+            lastTrans = !lastTrans;
+            currentPic = (++currentPic) % Photos.Count;
         }
 
         /// <summary>
