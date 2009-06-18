@@ -47,7 +47,7 @@ namespace HUELLAS
             NBioAPI.Type.HFIR m_hNewFIR = new NBioAPI.Type.HFIR();
             NBioAPI.Type.FIR_PAYLOAD myPayload = new NBioAPI.Type.FIR_PAYLOAD();
             //myPayload.Data = textPayload.Text;
-
+            
             uint ret = m_NBioAPI.Enroll(ref m_hNewFIR, out m_hNewFIR, null, NBioAPI.Type.TIMEOUT.DEFAULT, null, null);
 
             if (ret == NBioAPI.Error.NONE)

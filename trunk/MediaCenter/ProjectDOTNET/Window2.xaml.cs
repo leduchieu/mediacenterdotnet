@@ -180,6 +180,12 @@ namespace ProjectDOTNET
             {
                 s = (Storyboard)this.FindResource("phoneUp");
                 selected = "games";
+            }//added
+            else if (selected == "games")
+            {
+                Console.WriteLine("PASE");
+                s = (Storyboard)this.FindResource("gamesUp");
+                selected = "images";
             }
             if (s != null)
                 this.BeginStoryboard(s);
@@ -188,7 +194,12 @@ namespace ProjectDOTNET
         private void actionDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Storyboard s = null;
-            if (selected == "music")
+            if (selected == "images")
+            {
+                s = (Storyboard)this.FindResource("imagesDown");
+                selected = "games";
+            }
+            else if (selected == "music")
             {
                 s = (Storyboard)this.FindResource("musicDown");
                 selected = "images";
@@ -241,5 +252,101 @@ namespace ProjectDOTNET
             myDispatcherTimer.Stop();
             this.Close();
         }
-	}
+
+  
+        private void showMedicacion(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           // this.panelDrugs
+            this.panelDrugs.Opacity = 100;
+            this.panelDrugs.Visibility = Visibility.Visible;
+        }
+
+        private void imageClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "images") return;
+            Window wg = null;
+            wg = new WindowImages();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        private void musicClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "music") return;
+            Window wg = null;
+            wg = new WindowMusic();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        private void imageVideo_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "video") return;
+            Window wg = null;
+            wg = new WindowVideo();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        private void imageRSS_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "news") return;
+            Window wg = null;
+            wg = new WindowRSS();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        private void imagePhone_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "phone") return;
+            Window wg = null;
+            wg = new WindowPhone();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        private void imagePac_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+        }
+
+        private void imagePac_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (selected != "games") return;
+            Window wg = null;
+            wg = new WindowGames();
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+        }
+
+        /*
+         *            Window wg = null;
+            switch (selected)
+            {
+                case "images": wg = new WindowImages(); break;
+                case "music": wg = new WindowMusic(); break;
+                case "videos": wg = new WindowVideo(); break;
+                case "news": wg = new WindowRSS(); break;
+                case "phone": wg = new WindowPhone(); break;
+                case "games": wg = new WindowGames(); break;
+            }
+            wg.WindowState = WindowState.Maximized;
+            wg.Show();
+            myDispatcherTimer.Stop();
+            this.Close();
+         * */
+    }
 }
