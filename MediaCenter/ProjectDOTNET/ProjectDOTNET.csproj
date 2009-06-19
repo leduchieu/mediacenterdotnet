@@ -70,9 +70,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="configSQL.cs" />
+    <Compile Include="IConfig.cs" />
     <Compile Include="LoginSettings.xaml.cs">
       <DependentUpon>LoginSettings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RssLoader.cs" />
     <Compile Include="WindowScreenSaver.xaml.cs">
       <DependentUpon>WindowScreenSaver.xaml</DependentUpon>
     </Compile>

@@ -271,7 +271,7 @@ namespace ProjectDOTNET
             if (playingSong == Songs.Count)
                 playingSong = 0;
             else
-                playingSong++;
+                playingSong = (++playingSong) % Songs.Count;
             this.musica.Source = new Uri(Songs[playingSong].Path, UriKind.Relative);
         }
 	}

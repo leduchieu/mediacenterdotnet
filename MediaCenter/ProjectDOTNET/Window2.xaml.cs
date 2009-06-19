@@ -29,7 +29,7 @@ namespace ProjectDOTNET
         /// <summary>
         /// Variable para saber sonido
         /// </summary>
-        private bool sonido = true;
+        //private bool sonido = true;
 
         /// <summary>
         /// Constructor de window2
@@ -39,7 +39,12 @@ namespace ProjectDOTNET
 			this.InitializeComponent();
 			
 			// Insert code required on object creation below this point.
-            
+            BitmapSource img = null;
+            if (Settings.Volumen)
+                img = BitmapFrame.Create(new Uri(".\\Utils\\stock_volume-max.png", UriKind.Relative));
+            else
+            img = BitmapFrame.Create(new Uri(".\\Utils\\audio-volume-muted.png", UriKind.Relative));
+            this.imgVol.Source = img;
 		}
 
         /// <summary>Metodo al iniciar la ventana principal
@@ -115,7 +120,7 @@ namespace ProjectDOTNET
             if (inactivo == 10)
             {
                 myDispatcherTimer.Stop();
-                WindowScreenSaver wsc = new WindowScreenSaver(this.sonido);
+                WindowScreenSaver wsc = new WindowScreenSaver(Settings.Volumen);
                 wsc.WindowState = WindowState.Maximized;
                 wsc.Show();
                 this.Close();
@@ -236,11 +241,11 @@ namespace ProjectDOTNET
         private void changeVol(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             BitmapSource img = null;
-            if (sonido)
+            if (Settings.Volumen)
                 img = BitmapFrame.Create(new Uri(".\\Utils\\audio-volume-muted.png",UriKind.Relative));
             else
                 img = BitmapFrame.Create(new Uri(".\\Utils\\stock_volume-max.png",UriKind.Relative));
-            sonido = !sonido;
+            Settings.Volumen = !Settings.Volumen;
             this.imgVol.Source = img;
         }
 
