@@ -1572,14 +1572,14 @@
 		<Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="150" Source="Utils\stock_volume-max.png" Stretch="Fill" Margin="0,0,30,30" Opacity="0.695" x:Name="imgVol" MouseLeftButtonUp="changeVol"/>
 		<StackPanel Margin="0,0,0,30" VerticalAlignment="Bottom" Height="Auto" Orientation="Horizontal" HorizontalAlignment="Center" Opacity="0.595" x:Name="stackPanel" MouseLeftButtonUp="configClick">
 			<Image Width="50" Height="50" Source="Utils\settings.png" Stretch="Fill"/>
-			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" x:Name="textBlock">
+			<TextBlock Width="Auto" Height="Auto" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" x:Name="textBlock" Text="Contenido">
 				<TextBlock.Foreground>
 					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 						<GradientStop Color="#FF000000" Offset="0"/>
 						<GradientStop Color="#FFFFFFFF" Offset="1"/>
 						<GradientStop Color="#FF868686" Offset="0.527"/>
 					</LinearGradientBrush>
-				</TextBlock.Foreground><Run Text="Configuración" Language="es-es"/></TextBlock>
+				</TextBlock.Foreground></TextBlock>
 		</StackPanel>
 		<Rectangle Margin="8,8,8,8" Stroke="#FF000000" RadiusX="20" RadiusY="20" VirtualizingStackPanel.VirtualizationMode="Recycling" Opacity="1" x:Name="panelDrugs" Visibility="Hidden">
 			<Rectangle.Fill>

@@ -30,7 +30,7 @@
 				<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Título:"/>
 				<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=title}"/>
 				<TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" Text="Descripción:"/>
-				<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=description}"/>
+				<Frame Grid.Row="1" Grid.Column="1" Content="{Binding XPath=description}"/>
 				<TextBlock Grid.Row="2" Grid.Column="0" FontWeight="Bold" Text="Fecha publicación:  "/>
 				<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Mode=OneWay, XPath=pubDate}"/>
 				<TextBlock Grid.Row="3" Grid.Column="0" FontWeight="Bold" Text="Link:  "/>
@@ -221,7 +221,7 @@
 	<Grid x:Name="LayoutRoot">
 		<Image Margin="0,0,0,0" Source="Utils\Wallpaper.jpg" Stretch="Fill"/>
 		<ListBox ItemTemplate="{DynamicResource itemTemplate}" ItemsSource="{Binding Mode=OneWay, Source={StaticResource RSSAZ}, XPath=/rss/channel/item}" HorizontalAlignment="Stretch" Margin="20,20,20,240" Width="Auto" Background="#A5FFFFFF" Foreground="#FF000000" SelectedIndex="-1" FontSize="16" Panel.ZIndex="0" IsHitTestVisible="True" IsTabStop="False" ScrollViewer.IsDeferredScrollingEnabled="False" x:Name="listBox" ItemContainerStyle="{DynamicResource ListBoxItemStyle}" MouseDoubleClick="listBox_MouseDoubleClick"/>
-		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Margin="0,0,0,80" Orientation="Horizontal">
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Margin="0,0,0,80" Orientation="Horizontal" x:Name="PanelRSS">
 			<Image Opacity="0.695" x:Name="AZImg" Width="70" Height="70" Source="Utils\Az.png" Stretch="Fill" MouseLeftButtonUp="AZImg_MouseLeftButtonUp"/>
 			<Image Opacity="0.695" x:Name="mvImg" Width="80" Height="80" Source="Utils\MV.png" Stretch="Fill" MouseLeftButtonUp="mvImg_MouseLeftButtonUp"/>
 			<Image Width="70" Height="70" Source="Utils\meneame.png" Stretch="Fill" Opacity="0.695" x:Name="meneameImg" MouseUp="meneameImg_MouseUp"/>

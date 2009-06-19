@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
+using System.Windows;
 
 
 namespace HUELLAS
@@ -68,6 +69,7 @@ namespace HUELLAS
                 mycommand.Parameters.AddWithValue("@Name", name);
                 mycommand.Parameters.AddWithValue("@Fingerprint", fingerprint);
                 mycommand.ExecuteNonQuery();
+                MessageBox.Show(mycommand.CommandText);
             }
             catch (Exception e)
             {
