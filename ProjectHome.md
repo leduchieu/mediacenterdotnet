@@ -1,0 +1,1 @@
+The aim of this project is to provide easy graphical user interface for people who are not used to interact with computer.
